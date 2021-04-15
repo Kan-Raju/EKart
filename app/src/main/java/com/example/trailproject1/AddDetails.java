@@ -42,7 +42,6 @@ public class AddDetails extends AppCompatActivity {
         saveBtn=findViewById(R.id.saveBtn);
 
 
-
         firebaseAuth=FirebaseAuth.getInstance();
         fStore=FirebaseFirestore.getInstance();
 
