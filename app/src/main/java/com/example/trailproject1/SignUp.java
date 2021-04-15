@@ -21,7 +21,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AddDetails extends AppCompatActivity {
+public class SignUp extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     FirebaseFirestore fStore;
     EditText firstName,lastName,email;
@@ -34,7 +34,7 @@ public class AddDetails extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_details);
+        setContentView(R.layout.activity_sign_up);
 
         firstName=findViewById(R.id.firstName);
         lastName=findViewById(R.id.lastName);
@@ -47,6 +47,7 @@ public class AddDetails extends AppCompatActivity {
 
         userID=firebaseAuth.getCurrentUser().getUid();
 
+        Toast.makeText(this, "userId + " + userID, Toast.LENGTH_LONG).show();
         DocumentReference docRef= fStore.collection("users").document(userID);
 
         isCustomerBox=findViewById(R.id.isCustomer);
@@ -99,26 +100,31 @@ public class AddDetails extends AppCompatActivity {
 
                     //access level
                     if(isCustomerBox.isChecked()){
-                        user.put("isCustomer",1);
+                        user.put("isCustomer","1");
                     }
                     if(isRetailerBox.isChecked()){
-                        user.put("isRetailer",2);
+                        user.put("isRetailer","2");
                     }
                     if(isWholesalerBox.isChecked()){
-                        user.put("isWholesaler",3);
+                        user.put("isWholesaler","3");
                     }
-
-
 
                     docRef.set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
-                                startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                                finish();
+                                try
+                                {
+                                    startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                                }
+                                catch(Exception e)
+                                {
+                                    Toast.makeText(SignUp.this,"error "+e.toString(),Toast.LENGTH_SHORT).show();
+                                }
+                                // finish();
                             }
                             else{
-                                Toast.makeText(AddDetails.this,"Data is not inserted",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SignUp.this,"Data is not inserted",Toast.LENGTH_SHORT).show();
                             }
 
                         }
@@ -127,8 +133,7 @@ public class AddDetails extends AppCompatActivity {
 
                 }
                 else{
-                    Toast.makeText(AddDetails.this,"All fields are mandatory.",Toast.LENGTH_SHORT).show();
-                    return;
+                    Toast.makeText(SignUp.this,"All fields are mandatory.",Toast.LENGTH_SHORT).show();
                 }
             }
         });

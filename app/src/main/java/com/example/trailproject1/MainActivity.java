@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,33 +28,39 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        try {
+            setContentView(R.layout.activity_main);
 
-        toolbar=findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+            toolbar = findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
 
-        getSupportActionBar().setTitle("Profile");
+            getSupportActionBar().setTitle("Profile");
 
-        pName=findViewById(R.id.profileFullName);
-        pEmail=findViewById(R.id.profileEmail);
-        pPhone=findViewById(R.id.profilePhone);
+            pName = findViewById(R.id.profileFullName);
+            pEmail = findViewById(R.id.profileEmail);
+            pPhone = findViewById(R.id.profilePhone);
 
-        fAuth=FirebaseAuth.getInstance();
-        fStore=FirebaseFirestore.getInstance();
+            fAuth = FirebaseAuth.getInstance();
+            fStore = FirebaseFirestore.getInstance();
 
-        DocumentReference docRef=fStore.collection("users").document(fAuth.getCurrentUser().getUid());
-        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                if(documentSnapshot.exists()){
-                    String fullName=documentSnapshot.getString("firstName") + " " + documentSnapshot.getString("lastName");
-                    pName.setText(fullName);
-                    pEmail.setText(documentSnapshot.getString("emailAddress"));
-                    pPhone.setText(fAuth.getCurrentUser().getPhoneNumber());
+            DocumentReference docRef = fStore.collection("users").document(fAuth.getCurrentUser().getUid());
+            docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                @Override
+                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                    if (documentSnapshot.exists()) {
+                        String fullName = documentSnapshot.getString("firstName") + " " + documentSnapshot.getString("lastName");
+                        pName.setText(fullName);
+                        pEmail.setText(documentSnapshot.getString("emailAddress"));
+                        pPhone.setText(fAuth.getCurrentUser().getPhoneNumber());
+                    }
+
                 }
-
-            }
-        });
+            });
+        }
+        catch(Exception e)
+        {
+           Toast.makeText(this, "eror her", Toast.LENGTH_LONG).show();
+        }
 
     }
 
@@ -68,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId()==R.id.logout){
             FirebaseAuth.getInstance().signOut();
-            startActivity(new Intent(getApplicationContext(),Register.class));
+            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
             finish();
         }
 

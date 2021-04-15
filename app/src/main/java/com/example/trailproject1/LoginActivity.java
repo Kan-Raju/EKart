@@ -3,6 +3,7 @@ package com.example.trailproject1;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,7 +29,7 @@ import com.rilixtech.widget.countrycodepicker.CountryCodePicker;
 
 import java.util.concurrent.TimeUnit;
 
-public class Register extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     public static final String TAG = "TAG";
 
     FirebaseAuth fAuth;
@@ -48,7 +49,7 @@ public class Register extends AppCompatActivity {
             int x = 2;
             int y=7;
             super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_register);
+            setContentView(R.layout.activity_login);
             fAuth = FirebaseAuth.getInstance();
             fStore = FirebaseFirestore.getInstance();
             phoneNumber = findViewById(R.id.phone);
@@ -62,7 +63,7 @@ public class Register extends AppCompatActivity {
                 public void onClick(View v) {
                     if (!verificationInProgress) {
                         if (!phoneNumber.getText().toString().isEmpty() && phoneNumber.getText().toString().length() == 10) {
-                            String phoneNum = "+" + codePicker.getSelectedCountryCode() + phoneNumber.getText().toString();
+                            String phoneNum = "+91" + phoneNumber.getText().toString(); //+ codePicker.getSelectedCountryCode()
                             Log.d(TAG, "onClick: Phone Number->" + phoneNum);
                             progressBar.setVisibility(View.VISIBLE);
                             state.setText("Sending OTP...");
@@ -93,13 +94,13 @@ public class Register extends AppCompatActivity {
 
     @Override
     protected void onStart() {
-        super.onStart();
-        if(fAuth.getCurrentUser()!=null){
-            progressBar.setVisibility(View.VISIBLE);
-            state.setText("Checking..");
-            state.setVisibility(View.VISIBLE);
-            checkUserProfile();
-        }
+       super.onStart();
+//        if(fAuth.getCurrentUser()!=null){
+//            progressBar.setVisibility(View.VISIBLE);
+//            state.setText("Checking..");
+//            state.setVisibility(View.VISIBLE);
+//            checkUserProfile();
+//        }
     }
 
 
@@ -112,7 +113,7 @@ public class Register extends AppCompatActivity {
                     checkUserProfile();
                 }
                 else {
-                    Toast.makeText(Register.this,"Authentication failed ",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this,"Authentication failed ",Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -124,22 +125,30 @@ public class Register extends AppCompatActivity {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 if(documentSnapshot.exists()){
-                    if(documentSnapshot.getString("isCustomer")!=null){
-                        startActivity(new Intent(getApplicationContext(),Customer.class));
-                        finish();
+                    try
+                    {
+                        //Toast.makeText(Register.this, "hi ra : " + documentSnapshot.toString() , Toast.LENGTH_SHORT).show();
+                        if (documentSnapshot.getString("isCustomer") != null) {
+                            startActivity(new Intent(getApplicationContext(), Customer.class));
+                            finish();
+                        }
+                        if (documentSnapshot.getString("isRetailer") != null) {
+                            startActivity(new Intent(getApplicationContext(), Retailer.class));
+                            finish();
+                        }
+                        if (documentSnapshot.getString("isWholesaler") != null) {
+                            startActivity(new Intent(getApplicationContext(), Wholesaler.class));
+                            finish();
+                        }
                     }
-                    if(documentSnapshot.getString("isRetailer")!=null){
-                        startActivity(new Intent(getApplicationContext(), Retailer.class));
-                        finish();
+                    catch(Exception e)
+                    {
+                        String str = "hello "+e.toString();
+                        Toast.makeText(LoginActivity.this, str , Toast.LENGTH_SHORT).show();
                     }
-                    if(documentSnapshot.getString("isWholesaler")!=null){
-                        startActivity(new Intent(getApplicationContext(),Wholesaler.class));
-                        finish();
-                    }
-
                 }
                 else{
-                    startActivity(new Intent(getApplicationContext(),AddDetails.class));
+                    startActivity(new Intent(getApplicationContext(), SignUp.class));
                     finish();
                 }
             }
@@ -164,7 +173,7 @@ public class Register extends AppCompatActivity {
             @Override
             public void onCodeAutoRetrievalTimeOut(@NonNull String s) {
                 super.onCodeAutoRetrievalTimeOut(s);
-                Toast.makeText(Register.this,"OTP is expired",Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this,"OTP is expired",Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -174,7 +183,7 @@ public class Register extends AppCompatActivity {
 
             @Override
             public void onVerificationFailed(@NonNull FirebaseException e) {
-                Toast.makeText(Register.this,"Cannot create account"+e.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this,"Cannot create account"+e.getMessage(),Toast.LENGTH_SHORT).show();
             }
         });
     }
