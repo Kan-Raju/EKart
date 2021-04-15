@@ -46,6 +46,7 @@ public class Register extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         try {
             int x = 2;
+            int y=7;
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_register);
             fAuth = FirebaseAuth.getInstance();
