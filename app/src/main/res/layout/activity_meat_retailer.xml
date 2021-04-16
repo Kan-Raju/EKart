@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MeatRetailer">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="#63E6B2"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/ChickenImage"
+            android:layout_width="165dp"
+            android:layout_height="170dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="20dp"
+            app:srcCompat="@drawable/Chicken" />
+
+        <ImageView
+            android:id="@+id/FishImage"
+            android:layout_width="165dp"
+            android:layout_height="170dp"
+            android:layout_below="@+id/ChickenImage"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="40dp"
+            app:srcCompat="@drawable/Fish" />
+
+        <ImageView
+            android:id="@+id/MuttonImage"
+            android:layout_width="165dp"
+            android:layout_height="170dp"
+            android:layout_below="@+id/FishImage"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="40dp"
+            app:srcCompat="@drawable/Mutton" />
+
+        <Button
+            android:id="@+id/MyCartButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/MuttonImage"
+            android:layout_marginLeft="250dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="16dp"
+            android:text="My Cart" />
+
+        <TextView
+            android:id="@+id/ChickenName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/ChickenImage"
+            android:layout_toRightOf="@+id/ChickenImage"
+            android:layout_marginLeft="5dp"
+            android:text="Chicken"
+            android:textColor="#0E0608"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/FishName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/FishImage"
+            android:layout_toRightOf="@+id/FishImage"
+            android:layout_marginLeft="5dp"
+            android:text="Fish"
+            android:textColor="#0E0608"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/MuttonName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/MuttonImage"
+            android:layout_toRightOf="@+id/MuttonImage"
+            android:layout_marginLeft="5dp"
+            android:text="Mutton"
+            android:textColor="#0E0608"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/ChickenCost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ChickenName"
+            android:layout_toRightOf="@id/ChickenImage"
+            android:layout_marginLeft="5dp"
+            android:text="Cost : Rs 25/piece"
+            android:textColor="#0E0608"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/FishCost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/FishName"
+            android:layout_toRightOf="@id/FishImage"
+            android:layout_marginLeft="5dp"
+            android:text="Cost : Rs 10/piece"
+            android:textColor="#0E0608"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/MuttonCost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/MuttonName"
+            android:layout_toRightOf="@id/MuttonImage"
+            android:layout_marginLeft="5dp"
+            android:text="Cost : Rs 6/piece"
+            android:textColor="#0E0608"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/ChickenQuantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ChickenCost"
+            android:layout_toRightOf="@id/ChickenImage"
+            android:layout_marginLeft="5dp"
+            android:textSize="15dp"
+            android:text="Quantity"
+            android:textColor="#0E0608"
+            />
+
+        <TextView
+            android:id="@+id/FishQuantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/FishCost"
+            android:layout_toRightOf="@id/FishImage"
+            android:layout_marginLeft="5dp"
+            android:textSize="15dp"
+            android:text="Quantity"
+            android:textColor="#0E0608"
+            />
+
+        <TextView
+            android:id="@+id/MuttonQuantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/MuttonCost"
+            android:layout_toRightOf="@id/MuttonImage"
+            android:layout_marginLeft="5dp"
+            android:textSize="15dp"
+            android:text="Quantity"
+            android:textColor="#0E0608"
+            />
+
+        <Button
+            android:id="@+id/ChickenQauntDecButton"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ChickenQuantity"
+            android:onClick="decrementChicken"
+            android:layout_marginLeft="53dp"
+            android:layout_toRightOf="@id/ChickenImage"
+            android:text="-" />
+
+        <TextView
+            android:id="@+id/ChickenQuantityValue"
+            android:layout_width="33dp"
+            android:layout_height="47dp"
+            android:layout_below="@id/ChickenQuantity"
+            android:layout_marginRight="3dp"
+            android:text="0"
+            android:gravity="center"
+            android:layout_toLeftOf="@id/ChickenQauntIncButton"
+            android:layout_toRightOf="@id/ChickenQauntDecButton" />
+
+        <Button
+            android:id="@+id/ChickenQauntIncButton"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ChickenQuantity"
+            android:onClick="incrementChicken"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="46dp"
+            android:text="+" />
+
+        <Button
+            android:id="@+id/FishQauntDecButton"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/FishQuantity"
+            android:onClick="decrementFish"
+            android:layout_marginLeft="53dp"
+            android:layout_toRightOf="@id/FishImage"
+            android:text="-" />
+
+        <TextView
+            android:id="@+id/FishQuantityValue"
+            android:layout_width="33dp"
+            android:layout_height="47dp"
+            android:layout_below="@id/FishQuantity"
+            android:layout_marginRight="3dp"
+            android:text="0"
+            android:gravity="center"
+            android:layout_toLeftOf="@id/FishQauntIncButton"
+            android:layout_toRightOf="@id/FishQauntDecButton" />
+
+        <Button
+            android:id="@+id/FishQauntIncButton"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/FishQuantity"
+            android:onClick="incrementFish"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="46dp"
+            android:text="+" />
+
+        <Button
+            android:id="@+id/MuttonQauntDecButton"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/MuttonQuantity"
+            android:onClick="decrementMutton"
+            android:layout_marginLeft="53dp"
+            android:layout_toRightOf="@id/MuttonImage"
+            android:text="-" />
+
+        <TextView
+            android:id="@+id/MuttonQuantityValue"
+            android:layout_width="33dp"
+            android:layout_height="47dp"
+            android:layout_below="@id/MuttonQuantity"
+            android:layout_marginRight="3dp"
+            android:text="0"
+            android:gravity="center"
+            android:layout_toLeftOf="@id/MuttonQauntIncButton"
+            android:layout_toRightOf="@id/MuttonQauntDecButton" />
+
+        <Button
+            android:id="@+id/MuttonQauntIncButton"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/MuttonQuantity"
+            android:onClick="incrementMutton"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="46dp"
+            android:text="+" />
+
+        <Button
+            android:id="@+id/ChickenQauntitySelectButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/ChickenImage"
+            android:layout_below="@id/ChickenQauntIncButton"
+            android:layout_marginLeft="88dp"
+            android:text="Select"
+            />
+
+        <Button
+            android:id="@+id/FishQauntitySelectButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/FishImage"
+            android:layout_below="@id/FishQauntIncButton"
+            android:layout_marginLeft="88dp"
+            android:text="Select"
+            />
+
+        <Button
+            android:id="@+id/MuttonQauntitySelectButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/MuttonImage"
+            android:layout_below="@id/MuttonQauntIncButton"
+            android:layout_marginLeft="88dp"
+            android:text="Select"
+            />
+
+
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

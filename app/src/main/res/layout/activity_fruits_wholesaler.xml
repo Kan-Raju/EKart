@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FruitsWholesaler">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="#63E6B2"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/AppleImage"
+            android:layout_width="165dp"
+            android:layout_height="170dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="20dp"
+            app:srcCompat="@drawable/Apple" />
+
+        <ImageView
+            android:id="@+id/OrangeImage"
+            android:layout_width="165dp"
+            android:layout_height="170dp"
+            android:layout_below="@+id/AppleImage"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="40dp"
+            app:srcCompat="@drawable/Orange" />
+
+        <ImageView
+            android:id="@+id/BananaImage"
+            android:layout_width="165dp"
+            android:layout_height="170dp"
+            android:layout_below="@+id/OrangeImage"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="40dp"
+            app:srcCompat="@drawable/Banana" />
+
+
+        <TextView
+            android:id="@+id/AppleName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/AppleImage"
+            android:layout_toRightOf="@+id/AppleImage"
+            android:layout_marginLeft="5dp"
+            android:text="Apple"
+            android:textColor="#0E0608"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/OrangeName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/OrangeImage"
+            android:layout_toRightOf="@+id/OrangeImage"
+            android:layout_marginLeft="5dp"
+            android:text="Orange"
+            android:textColor="#0E0608"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/BananaName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/BananaImage"
+            android:layout_toRightOf="@+id/BananaImage"
+            android:layout_marginLeft="5dp"
+            android:text="Banana"
+            android:textColor="#0E0608"
+            android:textSize="18dp" />
+
+
+        <Button
+            android:id="@+id/AppleQauntitySelectButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/AppleImage"
+            android:layout_below="@id/AppleName"
+            android:layout_marginTop="100dp"
+            android:layout_marginLeft="88dp"
+            android:text="Select"
+            />
+
+        <Button
+            android:id="@+id/OrangeQauntitySelectButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/OrangeImage"
+            android:layout_below="@id/OrangeName"
+            android:layout_marginTop="100dp"
+            android:layout_marginLeft="88dp"
+            android:text="Select"
+            />
+
+        <Button
+            android:id="@+id/BananaQauntitySelectButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/BananaImage"
+            android:layout_below="@id/BananaName"
+            android:layout_marginTop="100dp"
+            android:layout_marginLeft="88dp"
+            android:text="Select"
+            />
+
+
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

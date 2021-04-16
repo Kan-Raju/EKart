@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MeatWholesaler">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="#63E6B2"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/ChickenImage"
+            android:layout_width="165dp"
+            android:layout_height="170dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="20dp"
+            app:srcCompat="@drawable/Chicken" />
+
+        <ImageView
+            android:id="@+id/FishImage"
+            android:layout_width="165dp"
+            android:layout_height="170dp"
+            android:layout_below="@+id/ChickenImage"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="40dp"
+            app:srcCompat="@drawable/Fish" />
+
+        <ImageView
+            android:id="@+id/MuttonImage"
+            android:layout_width="165dp"
+            android:layout_height="170dp"
+            android:layout_below="@+id/FishImage"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="40dp"
+            app:srcCompat="@drawable/Mutton" />
+
+
+        <TextView
+            android:id="@+id/ChickenName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/ChickenImage"
+            android:layout_toRightOf="@+id/ChickenImage"
+            android:layout_marginLeft="5dp"
+            android:text="Chicken"
+            android:textColor="#0E0608"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/FishName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/FishImage"
+            android:layout_toRightOf="@+id/FishImage"
+            android:layout_marginLeft="5dp"
+            android:text="Fish"
+            android:textColor="#0E0608"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/MuttonName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/MuttonImage"
+            android:layout_toRightOf="@+id/MuttonImage"
+            android:layout_marginLeft="5dp"
+            android:text="Mutton"
+            android:textColor="#0E0608"
+            android:textSize="18dp" />
+
+
+        <Button
+            android:id="@+id/ChickenQauntitySelectButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/ChickenImage"
+            android:layout_below="@id/ChickenName"
+            android:layout_marginTop="100dp"
+            android:layout_marginLeft="88dp"
+            android:text="Select"
+            />
+
+        <Button
+            android:id="@+id/FishQauntitySelectButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/FishImage"
+            android:layout_below="@id/FishName"
+            android:layout_marginTop="100dp"
+            android:layout_marginLeft="88dp"
+            android:text="Select"
+            />
+
+        <Button
+            android:id="@+id/MuttonQauntitySelectButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/MuttonImage"
+            android:layout_below="@id/MuttonName"
+            android:layout_marginTop="100dp"
+            android:layout_marginLeft="88dp"
+            android:text="Select"
+            />
+
+
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,6 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Trailproject1">
+        <activity android:name=".MeatWholesaler"></activity>
+        <activity android:name=".MeatRetailer" />
+        <activity android:name=".MeatCustomer" />
+        <activity android:name=".VegetablesWholesaler" />
+        <activity android:name=".VegetablesRetailer" />
+        <activity android:name=".VegetablesCustomer" />
+        <activity android:name=".FruitsWholesaler" />
+        <activity android:name=".FruitsRetailer" />
+        <activity android:name=".FruitsCustomer" />
+        <activity android:name=".MainMenuWholesaler" />
+        <activity android:name=".MainMenuRetailer" />
+        <activity android:name=".MainMenuCustomer" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,19 +28,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".Customer"
-        android:parentActivityName = ".LoginActivity"/>
-
-        <activity android:name=".Retailer"
-            android:parentActivityName = ".LoginActivity"/>
-
-        <activity android:name=".Wholesaler"
-            android:parentActivityName = ".LoginActivity"/>
-
-        <activity android:name=".SignUp"
-            android:parentActivityName = ".LoginActivity"/>
-
+        <activity
+            android:name=".Customer"
+            android:parentActivityName=".LoginActivity" />
+        <activity
+            android:name=".Retailer"
+            android:parentActivityName=".LoginActivity" />
+        <activity
+            android:name=".Wholesaler"
+            android:parentActivityName=".LoginActivity" />
+        <activity
+            android:name=".SignUp"
+            android:parentActivityName=".LoginActivity" />
         <activity android:name=".MainActivity" />
     </application>
 
