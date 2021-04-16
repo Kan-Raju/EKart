@@ -23,98 +23,70 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/TomatoImage"
+            android:id="@+id/WholesalerTomatoImage"
             android:layout_width="165dp"
             android:layout_height="170dp"
             android:layout_marginLeft="8dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="90dp"
             app:srcCompat="@drawable/Tomato" />
 
         <ImageView
-            android:id="@+id/OnionImage"
+            android:id="@+id/WholesalerOnionImage"
             android:layout_width="165dp"
             android:layout_height="170dp"
-            android:layout_below="@+id/TomatoImage"
+            android:layout_below="@+id/WholesalerTomatoImage"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="40dp"
             app:srcCompat="@drawable/Onion" />
 
-        <ImageView
-            android:id="@+id/CarrotImage"
-            android:layout_width="165dp"
-            android:layout_height="170dp"
-            android:layout_below="@+id/OnionImage"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="40dp"
-            app:srcCompat="@drawable/Carrot" />
 
 
         <TextView
-            android:id="@+id/TomatoName"
+            android:id="@+id/WholesalerTomatoName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/TomatoImage"
-            android:layout_toRightOf="@+id/TomatoImage"
+            android:layout_alignTop="@+id/WholesalerTomatoImage"
+            android:layout_toRightOf="@+id/WholesalerTomatoImage"
             android:layout_marginLeft="5dp"
             android:text="Tomato"
             android:textColor="#0E0608"
             android:textSize="18dp" />
 
         <TextView
-            android:id="@+id/OnionName"
+            android:id="@+id/WholesalerOnionName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/OnionImage"
-            android:layout_toRightOf="@+id/OnionImage"
+            android:layout_alignTop="@+id/WholesalerOnionImage"
+            android:layout_toRightOf="@+id/WholesalerOnionImage"
             android:layout_marginLeft="5dp"
             android:text="Onion"
             android:textColor="#0E0608"
             android:textSize="18dp" />
 
-        <TextView
-            android:id="@+id/CarrotName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/CarrotImage"
-            android:layout_toRightOf="@+id/CarrotImage"
-            android:layout_marginLeft="5dp"
-            android:text="Carrot"
-            android:textColor="#0E0608"
-            android:textSize="18dp" />
-
 
         <Button
-            android:id="@+id/TomatoQauntitySelectButton"
+            android:id="@+id/WholesalerTomatoQauntitySelectButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/TomatoImage"
-            android:layout_below="@id/TomatoName"
-            android:layout_marginTop="100dp"
+            android:layout_toRightOf="@id/WholesalerTomatoImage"
+            android:layout_marginTop="50dp"
+            android:layout_below="@id/WholesalerTomatoName"
             android:layout_marginLeft="88dp"
             android:text="Select"
             />
 
         <Button
-            android:id="@+id/OnionQauntitySelectButton"
+            android:id="@+id/WholesalerOnionQauntitySelectButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/OnionImage"
-            android:layout_below="@id/OnionName"
-            android:layout_marginTop="100dp"
+            android:layout_toRightOf="@id/WholesalerOnionImage"
+            android:layout_marginTop="50dp"
+            android:layout_below="@id/WholesalerOnionName"
             android:layout_marginLeft="88dp"
             android:text="Select"
             />
 
-        <Button
-            android:id="@+id/CarrotQauntitySelectButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/CarrotImage"
-            android:layout_below="@id/CarrotName"
-            android:layout_marginTop="100dp"
-            android:layout_marginLeft="88dp"
-            android:text="Select"
-            />
+
 
 
 

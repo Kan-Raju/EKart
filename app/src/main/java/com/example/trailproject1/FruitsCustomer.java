@@ -8,17 +8,16 @@ import android.widget.TextView;
 
 public class FruitsCustomer extends AppCompatActivity {
 
-    TextView applequantity,orangequantity,bananaquantity;
-    int countApple,countOrange,countBanana = 0;
+    TextView applequantity,orangequantity;
+    int countApple,countOrange = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fruits_customer);
 
-        applequantity = (TextView) findViewById(R.id.AppleQuantityValue);
-        orangequantity = (TextView) findViewById(R.id.OrangeQuantityValue);
-        bananaquantity = (TextView) findViewById(R.id.BananaQuantityValue);
+        applequantity = (TextView) findViewById(R.id.CustomerAppleQuantityValue);
+        orangequantity = (TextView) findViewById(R.id.CustomerOrangeQuantityValue);
 
     }
     public void incrementapple(View v)
@@ -46,19 +45,6 @@ public class FruitsCustomer extends AppCompatActivity {
         else
             countOrange--;
         orangequantity.setText("" + countOrange);
-    }
-    public void incrementbanana(View v)
-    {
-        countBanana++;
-        bananaquantity.setText("" + countBanana);
-    }
-    public void decrementbanana(View v)
-    {
-        if(countBanana<=0)
-            countBanana = 0;
-        else
-            countBanana--;
-        bananaquantity.setText("" + countBanana);
     }
 }
 

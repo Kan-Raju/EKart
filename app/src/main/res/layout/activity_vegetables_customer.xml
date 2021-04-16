@@ -23,80 +23,64 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/TomatoImage"
+            android:id="@+id/CustomerTomatoImage"
             android:layout_width="165dp"
             android:layout_height="170dp"
             android:layout_marginLeft="8dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="60dp"
             app:srcCompat="@drawable/Tomato" />
 
         <ImageView
-            android:id="@+id/OnionImage"
+            android:id="@+id/CustomerOnionImage"
             android:layout_width="165dp"
             android:layout_height="170dp"
-            android:layout_below="@+id/TomatoImage"
+            android:layout_below="@+id/CustomerTomatoImage"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="40dp"
             app:srcCompat="@drawable/Onion" />
 
-        <ImageView
-            android:id="@+id/CarrotImage"
-            android:layout_width="165dp"
-            android:layout_height="170dp"
-            android:layout_below="@+id/OnionImage"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="40dp"
-            app:srcCompat="@drawable/Carrot" />
+
 
         <Button
-            android:id="@+id/MyCartButton"
+            android:id="@+id/CustomerMyCartButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/CarrotImage"
+            android:layout_below="@+id/CustomerOnionImage"
             android:layout_marginLeft="250dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="100dp"
             android:layout_marginRight="16dp"
             android:text="My Cart" />
 
         <TextView
-            android:id="@+id/TomatoName"
+            android:id="@+id/CustomerTomatoName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/TomatoImage"
-            android:layout_toRightOf="@+id/TomatoImage"
+            android:layout_alignTop="@+id/CustomerTomatoImage"
+            android:layout_toRightOf="@+id/CustomerTomatoImage"
             android:layout_marginLeft="5dp"
             android:text="Tomato"
             android:textColor="#0E0608"
             android:textSize="18dp" />
 
         <TextView
-            android:id="@+id/OnionName"
+            android:id="@+id/CustomerOnionName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/OnionImage"
-            android:layout_toRightOf="@+id/OnionImage"
+            android:layout_alignTop="@+id/CustomerOnionImage"
+            android:layout_toRightOf="@+id/CustomerOnionImage"
             android:layout_marginLeft="5dp"
             android:text="Onion"
             android:textColor="#0E0608"
             android:textSize="18dp" />
 
-        <TextView
-            android:id="@+id/CarrotName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/CarrotImage"
-            android:layout_toRightOf="@+id/CarrotImage"
-            android:layout_marginLeft="5dp"
-            android:text="Carrot"
-            android:textColor="#0E0608"
-            android:textSize="18dp" />
+
 
         <TextView
-            android:id="@+id/TomatoCost"
+            android:id="@+id/CustomerTomatoCost"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/TomatoName"
-            android:layout_toRightOf="@id/TomatoImage"
+            android:layout_below="@id/CustomerTomatoName"
+            android:layout_toRightOf="@id/CustomerTomatoImage"
             android:layout_marginLeft="5dp"
             android:text="Cost : Rs 40/1pcs"
             android:textColor="#0E0608"
@@ -104,35 +88,25 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/OnionCost"
+            android:id="@+id/CustomerOnionCost"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/OnionName"
-            android:layout_toRightOf="@id/OnionImage"
+            android:layout_below="@id/CustomerOnionName"
+            android:layout_toRightOf="@id/CustomerOnionImage"
             android:layout_marginLeft="5dp"
             android:text="Cost : Rs 25/1pcs"
             android:textColor="#0E0608"
             android:textSize="15dp"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/CarrotCost"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/CarrotName"
-            android:layout_toRightOf="@id/CarrotImage"
-            android:layout_marginLeft="5dp"
-            android:text="Cost : Rs 5/1pcs"
-            android:textColor="#0E0608"
-            android:textSize="15dp"
-            android:textStyle="bold" />
+
 
         <TextView
-            android:id="@+id/TomatoQuantity"
+            android:id="@+id/CustomerTomatoQuantity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/TomatoCost"
-            android:layout_toRightOf="@id/TomatoImage"
+            android:layout_below="@id/CustomerTomatoCost"
+            android:layout_toRightOf="@id/CustomerTomatoImage"
             android:layout_marginLeft="5dp"
             android:textSize="15dp"
             android:text="Quantity"
@@ -140,151 +114,108 @@
             />
 
         <TextView
-            android:id="@+id/OnionQuantity"
+            android:id="@+id/CustomerOnionQuantity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/OnionCost"
-            android:layout_toRightOf="@id/OnionImage"
+            android:layout_below="@id/CustomerOnionCost"
+            android:layout_toRightOf="@id/CustomerOnionImage"
             android:layout_marginLeft="5dp"
             android:textSize="15dp"
             android:text="Quantity"
             android:textColor="#0E0608"
             />
 
-        <TextView
-            android:id="@+id/CarrotQuantity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/CarrotCost"
-            android:layout_toRightOf="@id/CarrotImage"
-            android:layout_marginLeft="5dp"
-            android:textSize="15dp"
-            android:text="Quantity"
-            android:textColor="#0E0608"
-            />
+
 
         <Button
-            android:id="@+id/TomatoQauntDecButton"
+            android:id="@+id/CustomerTomatoQauntDecButton"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/TomatoQuantity"
+            android:layout_below="@id/CustomerTomatoQuantity"
             android:onClick="decrementTomato"
             android:layout_marginLeft="53dp"
-            android:layout_toRightOf="@id/TomatoImage"
+            android:layout_toRightOf="@id/CustomerTomatoImage"
             android:text="-" />
 
         <TextView
-            android:id="@+id/TomatoQuantityValue"
+            android:id="@+id/CustomerTomatoQuantityValue"
             android:layout_width="33dp"
             android:layout_height="47dp"
-            android:layout_below="@id/TomatoQuantity"
+            android:layout_below="@id/CustomerTomatoQuantity"
             android:layout_marginRight="3dp"
             android:text="0"
             android:gravity="center"
-            android:layout_toLeftOf="@id/TomatoQauntIncButton"
-            android:layout_toRightOf="@id/TomatoQauntDecButton" />
+            android:layout_toLeftOf="@id/CustomerTomatoQauntIncButton"
+            android:layout_toRightOf="@id/CustomerTomatoQauntDecButton" />
 
         <Button
-            android:id="@+id/TomatoQauntIncButton"
+            android:id="@+id/CustomerTomatoQauntIncButton"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/TomatoQuantity"
+            android:layout_below="@id/CustomerTomatoQuantity"
             android:onClick="incrementTomato"
             android:layout_alignParentRight="true"
             android:layout_marginRight="46dp"
             android:text="+" />
 
         <Button
-            android:id="@+id/OnionQauntDecButton"
+            android:id="@+id/CustomerOnionQauntDecButton"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/OnionQuantity"
+            android:layout_below="@id/CustomerOnionQuantity"
             android:onClick="decrementOnion"
             android:layout_marginLeft="53dp"
-            android:layout_toRightOf="@id/OnionImage"
+            android:layout_toRightOf="@id/CustomerOnionImage"
             android:text="-" />
 
         <TextView
-            android:id="@+id/OnionQuantityValue"
+            android:id="@+id/CustomerOnionQuantityValue"
             android:layout_width="33dp"
             android:layout_height="47dp"
-            android:layout_below="@id/OnionQuantity"
+            android:layout_below="@id/CustomerOnionQuantity"
             android:layout_marginRight="3dp"
             android:text="0"
             android:gravity="center"
-            android:layout_toLeftOf="@id/OnionQauntIncButton"
-            android:layout_toRightOf="@id/OnionQauntDecButton" />
+            android:layout_toLeftOf="@id/CustomerOnionQauntIncButton"
+            android:layout_toRightOf="@id/CustomerOnionQauntDecButton" />
 
         <Button
-            android:id="@+id/OnionQauntIncButton"
+            android:id="@+id/CustomerOnionQauntIncButton"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/OnionQuantity"
+            android:layout_below="@id/CustomerOnionQuantity"
             android:onClick="incrementOnion"
             android:layout_alignParentRight="true"
             android:layout_marginRight="46dp"
             android:text="+" />
 
-        <Button
-            android:id="@+id/CarrotQauntDecButton"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/CarrotQuantity"
-            android:onClick="decrementCarrot"
-            android:layout_marginLeft="53dp"
-            android:layout_toRightOf="@id/CarrotImage"
-            android:text="-" />
 
-        <TextView
-            android:id="@+id/CarrotQuantityValue"
-            android:layout_width="33dp"
-            android:layout_height="47dp"
-            android:layout_below="@id/CarrotQuantity"
-            android:layout_marginRight="3dp"
-            android:text="0"
-            android:gravity="center"
-            android:layout_toLeftOf="@id/CarrotQauntIncButton"
-            android:layout_toRightOf="@id/CarrotQauntDecButton" />
+
+
+
+
 
         <Button
-            android:id="@+id/CarrotQauntIncButton"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/CarrotQuantity"
-            android:onClick="incrementCarrot"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="46dp"
-            android:text="+" />
-
-        <Button
-            android:id="@+id/TomatoQauntitySelectButton"
+            android:id="@+id/CustomerTomatoQauntitySelectButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/TomatoImage"
-            android:layout_below="@id/TomatoQauntIncButton"
+            android:layout_toRightOf="@id/CustomerTomatoImage"
+            android:layout_below="@id/CustomerTomatoQauntIncButton"
             android:layout_marginLeft="88dp"
             android:text="Select"
             />
 
         <Button
-            android:id="@+id/OnionQauntitySelectButton"
+            android:id="@+id/CustomerOnionQauntitySelectButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/OnionImage"
-            android:layout_below="@id/OnionQauntIncButton"
+            android:layout_toRightOf="@id/CustomerOnionImage"
+            android:layout_below="@id/CustomerOnionQauntIncButton"
             android:layout_marginLeft="88dp"
             android:text="Select"
             />
 
-        <Button
-            android:id="@+id/CarrotQauntitySelectButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/CarrotImage"
-            android:layout_below="@id/CarrotQauntIncButton"
-            android:layout_marginLeft="88dp"
-            android:text="Select"
-            />
+
 
 
 
