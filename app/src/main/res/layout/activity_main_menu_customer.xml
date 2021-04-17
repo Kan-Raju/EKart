@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/MainDisplayText"
+            android:id="@+id/CustomerMainMenuMainDisplayText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -36,7 +36,7 @@
             android:textSize="20dp" />
 
         <Button
-            android:id="@+id/FruitsButton"
+            android:id="@+id/CustomerMainMenuFruitsButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -45,10 +45,10 @@
             android:text="Fruits" />
 
         <Button
-            android:id="@+id/VegetablesButton"
+            android:id="@+id/CustomerMainMenuVegetablesButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/FruitsButton"
+            android:layout_below="@+id/CustomerMainMenuFruitsButton"
             android:layout_marginStart="16dp"
             android:layout_marginTop="40dp"
             android:layout_marginEnd="16dp"
@@ -57,20 +57,20 @@
 
 
         <Button
-            android:id="@+id/MyCartButton"
+            android:id="@+id/CustomerMainMenuMyCartButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/VegetablesButton"
+            android:layout_below="@id/CustomerMainMenuVegetablesButton"
             android:layout_marginLeft="250dp"
             android:layout_marginTop="100dp"
             android:layout_marginRight="16dp"
             android:text="My Cart" />
 
         <Button
-            android:id="@+id/MyOrdersButton"
+            android:id="@+id/CustomerMainMenuMyOrdersButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/VegetablesButton"
+            android:layout_below="@id/CustomerMainMenuVegetablesButton"
             android:layout_marginTop="100dp"
             android:layout_marginLeft="16dp"
             android:text="MyOrders" />

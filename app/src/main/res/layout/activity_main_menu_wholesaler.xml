@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/MainDisplayText"
+            android:id="@+id/WholesalerMainMenuMainDisplayText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -36,7 +36,7 @@
             android:textSize="20dp" />
 
         <Button
-            android:id="@+id/FruitsButton"
+            android:id="@+id/WholesalerMainMenuFruitsButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -45,10 +45,10 @@
             android:text="Fruits" />
 
         <Button
-            android:id="@+id/VegetablesButton"
+            android:id="@+id/WholesalerMainMenuVegetablesButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/FruitsButton"
+            android:layout_below="@+id/WholesalerMainMenuFruitsButton"
             android:layout_marginStart="16dp"
             android:layout_marginTop="40dp"
             android:layout_marginEnd="16dp"

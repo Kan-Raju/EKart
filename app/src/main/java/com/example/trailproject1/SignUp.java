@@ -115,7 +115,7 @@ public class SignUp extends AppCompatActivity {
                             if(task.isSuccessful()){
                                 try
                                 {
-                                    startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                                    startActivity(new Intent(getApplicationContext(),LoginActivity.class));
                                 }
                                 catch(Exception e)
                                 {

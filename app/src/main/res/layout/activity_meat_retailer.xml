@@ -28,7 +28,7 @@
             android:layout_height="170dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="20dp"
-            app:srcCompat="@drawable/Chicken" />
+            app:srcCompat="@drawable/chickenmeat" />
 
         <ImageView
             android:id="@+id/FishImage"
@@ -37,7 +37,7 @@
             android:layout_below="@+id/ChickenImage"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="40dp"
-            app:srcCompat="@drawable/Fish" />
+            app:srcCompat="@drawable/fishmeat" />
 
         <ImageView
             android:id="@+id/MuttonImage"
@@ -46,7 +46,7 @@
             android:layout_below="@+id/FishImage"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="40dp"
-            app:srcCompat="@drawable/Mutton" />
+            app:srcCompat="@drawable/muttonmeat" />
 
         <Button
             android:id="@+id/MyCartButton"
@@ -168,7 +168,7 @@
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/ChickenQuantity"
-            android:onClick="decrementChicken"
+
             android:layout_marginLeft="53dp"
             android:layout_toRightOf="@id/ChickenImage"
             android:text="-" />
@@ -189,7 +189,7 @@
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/ChickenQuantity"
-            android:onClick="incrementChicken"
+
             android:layout_alignParentRight="true"
             android:layout_marginRight="46dp"
             android:text="+" />
@@ -199,7 +199,7 @@
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/FishQuantity"
-            android:onClick="decrementFish"
+
             android:layout_marginLeft="53dp"
             android:layout_toRightOf="@id/FishImage"
             android:text="-" />
@@ -220,7 +220,7 @@
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/FishQuantity"
-            android:onClick="incrementFish"
+
             android:layout_alignParentRight="true"
             android:layout_marginRight="46dp"
             android:text="+" />
@@ -230,7 +230,7 @@
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/MuttonQuantity"
-            android:onClick="decrementMutton"
+
             android:layout_marginLeft="53dp"
             android:layout_toRightOf="@id/MuttonImage"
             android:text="-" />
@@ -251,7 +251,7 @@
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/MuttonQuantity"
-            android:onClick="incrementMutton"
+
             android:layout_alignParentRight="true"
             android:layout_marginRight="46dp"
             android:text="+" />

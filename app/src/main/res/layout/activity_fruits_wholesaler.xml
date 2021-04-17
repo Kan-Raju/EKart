@@ -28,7 +28,7 @@
             android:layout_height="170dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="100dp"
-            app:srcCompat="@drawable/Apple" />
+            app:srcCompat="@drawable/applefruit" />
 
         <ImageView
             android:id="@+id/WholesalerOrangeImage"
@@ -37,7 +37,7 @@
             android:layout_below="@+id/WholesalerAppleImage"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="40dp"
-            app:srcCompat="@drawable/Orange" />
+            app:srcCompat="@drawable/orangefruit" />
 
 
 
