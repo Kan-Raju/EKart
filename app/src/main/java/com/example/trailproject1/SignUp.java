@@ -100,13 +100,13 @@ public class SignUp extends AppCompatActivity {
 
                     //access level
                     if(isCustomerBox.isChecked()){
-                        user.put("isCustomer","1");
+                        user.put("userType","1");
                     }
                     if(isRetailerBox.isChecked()){
-                        user.put("isRetailer","2");
+                        user.put("userType","2");
                     }
                     if(isWholesalerBox.isChecked()){
-                        user.put("isWholesaler","3");
+                        user.put("userType","3");
                     }
 
                     docRef.set(user).addOnCompleteListener(new OnCompleteListener<Void>() {

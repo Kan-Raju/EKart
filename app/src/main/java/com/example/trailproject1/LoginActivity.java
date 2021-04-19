@@ -128,15 +128,15 @@ public class LoginActivity extends AppCompatActivity {
                     try
                     {
                         //Toast.makeText(Register.this, "hi ra : " + documentSnapshot.toString() , Toast.LENGTH_SHORT).show();
-                        if (documentSnapshot.getString("isCustomer") != null) {
+                        if (documentSnapshot.getString("userType").equals("1") ){
                             startActivity(new Intent(getApplicationContext(), MainMenuCustomer.class));
                             finish();
                         }
-                        if (documentSnapshot.getString("isRetailer") != null) {
+                        if (documentSnapshot.getString("userType").equals("2")  ) {
                             startActivity(new Intent(getApplicationContext(), MainMenuRetailer.class));
                             finish();
                         }
-                        if (documentSnapshot.getString("isWholesaler") != null) {
+                        if (documentSnapshot.getString("userType").equals("3") ) {
                             startActivity(new Intent(getApplicationContext(), MainMenuWholesaler.class));
                             finish();
                         }
