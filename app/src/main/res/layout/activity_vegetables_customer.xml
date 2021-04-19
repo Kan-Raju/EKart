@@ -71,6 +71,7 @@
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/CustomerTomatoImage"
             android:layout_toRightOf="@+id/CustomerTomatoImage"
+            android:layout_marginTop="25dp"
             android:layout_marginLeft="5dp"
             android:text="Tomato"
             android:textColor="#0E0608"

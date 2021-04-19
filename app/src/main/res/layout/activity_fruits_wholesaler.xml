@@ -32,7 +32,7 @@
             android:layout_marginEnd="16dp"
             android:background="@color/black"
             android:gravity="center"
-            android:text=" Wholesaler's Fruit categories"
+            android:text=" Wholesalers's Fruit categories"
             android:textColor="@color/white"
             android:textSize="20dp" />
 
@@ -42,6 +42,7 @@
             android:layout_height="170dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="100dp"
+
             app:srcCompat="@drawable/applefruit" />
 
         <ImageView
@@ -59,7 +60,7 @@
             android:id="@+id/WholesalerMyCartButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/WholesalerOrangeImage"
+            android:layout_below="@+id/WholesalerOrangeQauntitySelectButton"
             android:layout_marginLeft="250dp"
             android:layout_marginTop="100dp"
             android:layout_marginRight="16dp"
@@ -89,14 +90,130 @@
 
 
 
+        <TextView
+            android:id="@+id/WholesalerAppleCost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/WholesalerAppleName"
+            android:layout_toRightOf="@id/WholesalerAppleImage"
+            android:layout_marginLeft="5dp"
+            android:text="Cost : Rs 35/1pcs"
+            android:textColor="#0E0608"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/WholesalerOrangeCost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/WholesalerOrangeName"
+            android:layout_toRightOf="@id/WholesalerOrangeImage"
+            android:layout_marginLeft="5dp"
+            android:text="Cost : Rs 20/1pcs"
+            android:textColor="#0E0608"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+
+
+        <TextView
+            android:id="@+id/WholesalerAppleQuantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/WholesalerAppleCost"
+            android:layout_toRightOf="@id/WholesalerAppleImage"
+            android:layout_marginLeft="5dp"
+            android:textSize="15dp"
+            android:text="Quantity"
+            android:textColor="#0E0608"
+            />
+
+        <TextView
+            android:id="@+id/WholesalerOrangeQuantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/WholesalerOrangeCost"
+            android:layout_toRightOf="@id/WholesalerOrangeImage"
+            android:layout_marginLeft="5dp"
+            android:textSize="15dp"
+            android:text="Quantity"
+            android:textColor="#0E0608"
+            />
+
+
+
+        <Button
+            android:id="@+id/WholesalerAppleQauntDecButton"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/WholesalerAppleQuantity"
+            android:onClick="decrementapple"
+            android:layout_marginLeft="53dp"
+            android:layout_toRightOf="@id/WholesalerAppleImage"
+            android:text="-" />
+
+        <TextView
+            android:id="@+id/WholesalerAppleQuantityValue"
+            android:layout_width="33dp"
+            android:layout_height="47dp"
+            android:layout_below="@id/WholesalerAppleQuantity"
+            android:layout_marginRight="3dp"
+            android:text="0"
+            android:gravity="center"
+            android:layout_toLeftOf="@id/WholesalerAppleQauntIncButton"
+            android:layout_toRightOf="@id/WholesalerAppleQauntDecButton" />
+
+        <Button
+            android:id="@+id/WholesalerAppleQauntIncButton"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/WholesalerAppleQuantity"
+            android:onClick="incrementapple"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="46dp"
+            android:text="+" />
+
+        <Button
+            android:id="@+id/WholesalerOrangeQauntDecButton"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/WholesalerOrangeQuantity"
+            android:onClick="decrementorange"
+            android:layout_marginLeft="53dp"
+            android:layout_toRightOf="@id/WholesalerOrangeImage"
+            android:text="-" />
+
+        <TextView
+            android:id="@+id/WholesalerOrangeQuantityValue"
+            android:layout_width="33dp"
+            android:layout_height="47dp"
+            android:layout_below="@id/WholesalerOrangeQuantity"
+            android:layout_marginRight="3dp"
+            android:text="0"
+            android:gravity="center"
+            android:layout_toLeftOf="@id/WholesalerOrangeQauntIncButton"
+            android:layout_toRightOf="@id/WholesalerOrangeQauntDecButton" />
+
+        <Button
+            android:id="@+id/WholesalerOrangeQauntIncButton"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/WholesalerOrangeQuantity"
+            android:onClick="incrementorange"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="46dp"
+            android:text="+" />
+
+
+
+
 
         <Button
             android:id="@+id/WholesalerAppleQauntitySelectButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
             android:layout_toRightOf="@id/WholesalerAppleImage"
-            android:layout_below="@id/WholesalerAppleName"
+            android:layout_below="@id/WholesalerAppleQauntIncButton"
             android:layout_marginLeft="88dp"
             android:text="Select"
             />
@@ -105,12 +222,12 @@
             android:id="@+id/WholesalerOrangeQauntitySelectButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
             android:layout_toRightOf="@id/WholesalerOrangeImage"
-            android:layout_below="@id/WholesalerOrangeName"
+            android:layout_below="@id/WholesalerOrangeQauntIncButton"
             android:layout_marginLeft="88dp"
             android:text="Select"
             />
+
 
 
 

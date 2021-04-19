@@ -9,6 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Trailproject1">
+        <activity android:name=".WholesalerOnionSelect"></activity>
+        <activity android:name=".WholesalerTomatoSelect" />
+        <activity android:name=".WholesalerOrangeSelect" />
+        <activity android:name=".WholesalerAppleSelect" />
         <activity android:name=".CustomerVegetableTomatoSelectPage" />
         <activity android:name=".CustomerVegetableOnionSelectPage" />
         <activity android:name=".MainActivity" />
@@ -55,34 +59,30 @@
         <activity
             android:name=".VegetablesWholesaler"
             android:parentActivityName=".MainMenuWholesaler" />
-
         <activity
             android:name=".CustomerVegetableTomatoAddToCartPage"
-            android:parentActivityName=".VegetablesCustomer"/>
+            android:parentActivityName=".VegetablesCustomer" />
         <activity
             android:name=".CustomerVegetableOnionAddToCartPage"
-            android:parentActivityName="VegetablesCustomer"/>
+            android:parentActivityName=".VegetablesCustomer" />
         <activity
             android:name=".RetailerVegetableTomatoAddToCartPage"
-            android:parentActivityName=".VegetablesRetailer"/>
+            android:parentActivityName=".VegetablesRetailer" />
         <activity
             android:name=".RetailerVegetableOnionAddToCartPage"
-            android:parentActivityName="VegetablesRetailer"/>
+            android:parentActivityName=".VegetablesRetailer" />
         <activity
             android:name=".RetailerFruitOrangeAddToCartPage"
-            android:parentActivityName=".FruitsRetailer"/>
+            android:parentActivityName=".FruitsRetailer" />
         <activity
             android:name=".RetailerFruitAppleAddToCartPage"
-            android:parentActivityName="FruitsRetailer"/>
-
+            android:parentActivityName=".FruitsRetailer" />
         <activity
             android:name=".CustomerFruitOrangeAddToCartPage"
-            android:parentActivityName=".FruitsCustomer"/>
+            android:parentActivityName=".FruitsCustomer" />
         <activity
             android:name=".CustomerFruitAppleAddToCartPage"
-            android:parentActivityName=".FruitsCustomer"/>
-
-
+            android:parentActivityName=".FruitsCustomer" />
     </application>
 
 </manifest>
