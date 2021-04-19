@@ -2,14 +2,17 @@ package com.example.trailproject1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class FruitsRetailer extends AppCompatActivity {
 
     TextView applequantity,orangequantity;
     int countApple,countOrange = 0;
+    Button RetailerAppleSelectBtn,RetailerOrangeSelectBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +20,25 @@ public class FruitsRetailer extends AppCompatActivity {
         setContentView(R.layout.activity_fruits_retailer);
         applequantity=(TextView)findViewById(R.id.RetailerAppleQuantityValue);
         orangequantity = (TextView) findViewById(R.id.RetailerOrangeQuantityValue);
+
+        RetailerAppleSelectBtn=(Button)findViewById(R.id.RetailerAppleQauntitySelectButton);
+        RetailerOrangeSelectBtn=(Button)findViewById(R.id.RetailerOrangeQauntitySelectButton);
+
+
+        RetailerAppleSelectBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(FruitsRetailer.this,RetailerFruitAppleAddToCartPage.class);
+                startActivity(intent);
+            }
+        });
+        RetailerOrangeSelectBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(FruitsRetailer.this,RetailerFruitOrangeAddToCartPage.class);
+                startActivity(intent);
+            }
+        });
 
     }
     public void incrementapple(View v)

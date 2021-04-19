@@ -2,14 +2,17 @@ package com.example.trailproject1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class FruitsCustomer extends AppCompatActivity {
 
     TextView applequantity,orangequantity;
     int countApple,countOrange = 0;
+    Button CustomerAppleSelectBtn,CustomerOrangeSelectBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +21,24 @@ public class FruitsCustomer extends AppCompatActivity {
 
         applequantity = (TextView) findViewById(R.id.CustomerAppleQuantityValue);
         orangequantity = (TextView) findViewById(R.id.CustomerOrangeQuantityValue);
+        CustomerAppleSelectBtn=(Button)findViewById(R.id.CustomerAppleQauntitySelectButton);
+        CustomerOrangeSelectBtn=(Button)findViewById(R.id.CustomerOrangeQauntitySelectButton);
+
+
+        CustomerAppleSelectBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(FruitsCustomer.this,CustomerFruitAppleAddToCartPage.class);
+                startActivity(intent);
+            }
+        });
+        CustomerOrangeSelectBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(FruitsCustomer.this,CustomerFruitOrangeAddToCartPage.class);
+                startActivity(intent);
+            }
+        });
 
     }
     public void incrementapple(View v)

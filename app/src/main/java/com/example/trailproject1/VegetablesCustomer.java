@@ -2,20 +2,41 @@ package com.example.trailproject1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class VegetablesCustomer extends AppCompatActivity {
     TextView Tomatoquantity,Onionquantity;
     int count=0;
-
+    Button CustomerTomatoSelectBtn,CustomerOnionSelectBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vegetables_customer);
         Tomatoquantity = (TextView) findViewById(R.id.RetailerTomatoQuantityValue);
         Onionquantity = (TextView) findViewById(R.id.RetailerOrangeQuantityValue);
+
+        CustomerTomatoSelectBtn=(Button)findViewById(R.id.CustomerTomatoQauntitySelectButton);
+        CustomerOnionSelectBtn=(Button)findViewById(R.id.CustomerOnionQauntitySelectButton);
+
+
+        CustomerTomatoSelectBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(VegetablesCustomer.this,CustomerVegetableTomatoAddToCartPage.class);
+                startActivity(intent);
+            }
+        });
+        CustomerOnionSelectBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(VegetablesCustomer.this,CustomerVegetableTomatoAddToCartPage.class);
+                startActivity(intent);
+            }
+        });
     }
     public void incrementTomato(View v)
     {
