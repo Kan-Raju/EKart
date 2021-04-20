@@ -12,6 +12,7 @@ public class CustomerFruitAppleAddToCartPage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        int x=1;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_fruit_apple_add_to_cart_page);
 
