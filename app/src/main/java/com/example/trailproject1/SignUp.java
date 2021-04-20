@@ -24,7 +24,7 @@ import java.util.Map;
 public class SignUp extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     FirebaseFirestore fStore;
-    EditText firstName,lastName,email;
+    EditText firstName, cityName,email;
     Button saveBtn;
     String userID;
 
@@ -37,7 +37,7 @@ public class SignUp extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
 
         firstName=findViewById(R.id.firstName);
-        lastName=findViewById(R.id.lastName);
+        cityName =findViewById(R.id.cityName);
         email=findViewById(R.id.emailAddress);
         saveBtn=findViewById(R.id.saveBtn);
 
@@ -47,7 +47,7 @@ public class SignUp extends AppCompatActivity {
 
         userID=firebaseAuth.getCurrentUser().getUid();
 
-        Toast.makeText(this, "userId + " + userID, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "userId = " + userID, Toast.LENGTH_LONG).show();
         DocumentReference docRef= fStore.collection("users").document(userID);
 
         isCustomerBox=findViewById(R.id.isCustomer);
@@ -88,35 +88,42 @@ public class SignUp extends AppCompatActivity {
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!firstName.getText().toString().isEmpty() && !lastName.getText().toString().isEmpty() && !email.getText().toString().isEmpty()){
-                    String first=firstName.getText().toString();
-                    String last=lastName.getText().toString();
+                if(!firstName.getText().toString().isEmpty() && !cityName.getText().toString().isEmpty() && !email.getText().toString().isEmpty()){
+                    String name=firstName.getText().toString();
+                    String city= cityName.getText().toString();
                     String userEmail=email.getText().toString();
 
                     Map<String,Object> user=new HashMap<>();
-                    user.put("firstName",first);
-                    user.put("lastName",last);
+                    user.put("name",name);
+                    user.put("city",city);
                     user.put("emailAddress",userEmail);
 
                     //access level
                     if(isCustomerBox.isChecked()){
-                        user.put("userType","1");
+                        user.put("userType","customer");
                     }
                     if(isRetailerBox.isChecked()){
-                        user.put("userType","2");
+                        user.put("userType","retailer");
+                        user.put("appleCost","35");
+                        user.put("appleQuantity","543");
+                        user.put("orangeCost","15");
+                        user.put("orangeQuantity","249");
+                        user.put("tomatoCost","6");
+                        user.put("tomatoQuantity","1049");
+                        user.put("onionCost","3");
+                        user.put("onionQuantity","949");
                     }
                     if(isWholesalerBox.isChecked()){
-                        user.put("userType","3");
+                        user.put("userType","wholesaler");
+                        user.put("appleCost","25");
+                        user.put("appleQuantity","3543");
+                        user.put("orangeCost","10");
+                        user.put("orangeQuantity","3249");
+                        user.put("tomatoCost","3");
+                        user.put("tomatoQuantity","7049");
+                        user.put("onionCost","1");
+                        user.put("onionQuantity","3949");
                     }
-                    user.put("appleCost","0");
-                    user.put("appleQuantity","0");
-                    user.put("orangeCost","0");
-                    user.put("orangeQuantity","0");
-                    user.put("tomatoCost","0");
-                    user.put("tomatoQuantity","0");
-                    user.put("onionCost","0");
-                    user.put("onionQuantity","0");
-
 
 
                     docRef.set(user).addOnCompleteListener(new OnCompleteListener<Void>() {

@@ -46,8 +46,6 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         try {
-            int x = 2;
-            int y=7;
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_login);
             fAuth = FirebaseAuth.getInstance();
@@ -110,7 +108,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    checkUserProfile();
+                    checkUserProfileAndRedirectToNextPage();
                 }
                 else {
                     Toast.makeText(LoginActivity.this,"Authentication failed ",Toast.LENGTH_SHORT).show();
@@ -119,7 +117,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void checkUserProfile() {
+    private void checkUserProfileAndRedirectToNextPage() {
         DocumentReference docRef=fStore.collection("users").document(fAuth.getCurrentUser().getUid());
         docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
@@ -128,15 +126,15 @@ public class LoginActivity extends AppCompatActivity {
                     try
                     {
                         //Toast.makeText(Register.this, "hi ra : " + documentSnapshot.toString() , Toast.LENGTH_SHORT).show();
-                        if (documentSnapshot.getString("userType").equals("1") ){
+                        if (documentSnapshot.getString("userType").equals("customer") ){
                             startActivity(new Intent(getApplicationContext(), MainMenuCustomer.class));
                             finish();
                         }
-                        if (documentSnapshot.getString("userType").equals("2")  ) {
+                        if (documentSnapshot.getString("userType").equals("retailer")  ) {
                             startActivity(new Intent(getApplicationContext(), MainMenuRetailer.class));
                             finish();
                         }
-                        if (documentSnapshot.getString("userType").equals("3") ) {
+                        if (documentSnapshot.getString("userType").equals("wholesaler") ) {
                             startActivity(new Intent(getApplicationContext(), MainMenuWholesaler.class));
                             finish();
                         }

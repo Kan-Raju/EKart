@@ -1,5 +1,6 @@
 package com.example.trailproject1;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,6 +17,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
 import java.util.*;
 
 import static android.view.View.GONE;
@@ -26,20 +33,29 @@ public class CustomerFruitAppleAddToCartPage extends AppCompatActivity implement
 {
     String item = "Apple";
     int mod = 3;
-    int dup=7;
-    int dup2=8;
 
-    ArrayList<String> vendors;
+    ArrayList<Retailer> retailers;
     ArrayList<RelativeLayout> layoutarr = new ArrayList<>();
     ArrayList<Button> addToCartBtnArr = new ArrayList<>();
-    ArrayList<TextView> itemNamearr = new ArrayList<>();
+    ArrayList<Button> plsBtnArr = new ArrayList<>();
+    ArrayList<Button> minusBtnArr = new ArrayList<>();
+    ArrayList<TextView> countArr = new ArrayList<>();
+    TextView search_space;
+    Button search_btn;
+
 
 
     @Override
     public void onClick(View v)
     {
 
+
     }
+    private void setListenersToAllButtons(Context context)
+    {
+
+    }
+
     //@RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     private RelativeLayout getLayout(Context context, int pos)
     {
@@ -53,7 +69,7 @@ public class CustomerFruitAppleAddToCartPage extends AppCompatActivity implement
 
             Button addToCart = new Button(this);
             addToCart.setId(mod*pos+2);
-            addToCart.setText(vendors.get(pos)+"dd to Cart");
+            addToCart.setText(retailers.get(pos)+" Cart");
             addToCart.setTextColor(Color.BLACK);
             addToCart.setBackgroundColor(Color.WHITE);
             RelativeLayout.LayoutParams addToCartParam = new RelativeLayout.LayoutParams(ht-1, ht-1);
@@ -104,7 +120,6 @@ public class CustomerFruitAppleAddToCartPage extends AppCompatActivity implement
 
             layoutarr.add(layout);
             addToCartBtnArr.add(addToCart);
-            itemNamearr.add(itemName);
 
             layout.addView(addToCart);
             layout.addView(itemName);
@@ -119,28 +134,116 @@ public class CustomerFruitAppleAddToCartPage extends AppCompatActivity implement
         }
         return layout;
     }
-    private void displayAllVendors(LinearLayout parent)
+    private void displayAllRetailers(LinearLayout parent)
     {
         RelativeLayout inner;
-        for(int vendor_pos=0; vendor_pos < vendors.size(); vendor_pos++)
+        for(int retailer_pos=0; retailer_pos < retailers.size(); retailer_pos++)
         {
-            inner=getLayout(this,vendor_pos);
+            inner=getLayout(this,retailer_pos);
             parent.addView(inner);
         }
+    }
+
+    private ArrayList<Retailer> getAllRetailersFromFirebase(Context context)
+    {
+        ArrayList<Retailer> soln = new ArrayList<Retailer>();
+        final boolean[] flag = {false};
+        FirebaseFirestore.getInstance().collection("users")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful())
+                        {
+
+                            for (QueryDocumentSnapshot document : task.getResult())
+                            {
+                                if(document.getString("userType").equals("retailer")) {
+                                    HashMap<String, String> hmap = new HashMap<>();
+                                    hmap.put("name", document.getString("name"));
+                                    hmap.put("city", document.getString("city"));
+                                    hmap.put("email", document.getString("email"));
+                                    hmap.put("appC", document.getString("appleCost"));
+                                    hmap.put("appQ", document.getString("appleQuantity"));
+                                    hmap.put("orngC", document.getString("orangeCost"));
+                                    hmap.put("orngQ", document.getString("orangeQuantity"));
+                                    hmap.put("tmtC", document.getString("tomatoCost"));
+                                    hmap.put("tmtQ", document.getString("tomatoQuantity"));
+                                    hmap.put("oninC", document.getString("onionCost"));
+                                    hmap.put("oninQ", document.getString("onionQuantity"));
+
+                                    Toast.makeText(context,hmap.toString(),Toast.LENGTH_LONG).show();
+
+                                    soln.add(new Retailer(hmap));
+                                }
+                                else
+                                {
+                                    Toast.makeText(context,document.getString("userType"),Toast.LENGTH_LONG).show();
+                                }
+                            }
+                        }
+                        else
+                        {
+                            Toast.makeText(context,"task failed",Toast.LENGTH_LONG).show();
+                        }
+                        flag[0] = true;
+                    }
+                });
+
+        //while(!flag[0]);
+        return soln;
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_fruit_apple_add_to_cart_page);
+        search_space = findViewById(R.id.search_space);
+        search_btn =findViewById( R.id.search_btn);
 
         LinearLayout parent = findViewById(R.id.outer_layout);
-        vendors = new ArrayList<>(Arrays.asList("1","2","3","4","5","6","7","8","9")); //ideally this should be list of vendor objects.
 
-        displayAllVendors(parent);
 
+//        NewThread nt= new NewThread();
+//        try {
+//            nt.t.start();
+//        }
+//        catch(Exception e) {
+//            Toast.makeText(this, "err = " + e.toString(), Toast.LENGTH_SHORT).show();
+//        }
+
+        try {
+            retailers = getAllRetailersFromFirebase(this);
+            String x = retailers.get(0).toHashMap().toString();
+            Toast.makeText(this,"x = " + x, Toast.LENGTH_LONG).show();
+        }
+        catch(Exception e)
+        {
+            Toast.makeText(this,e.toString(), Toast.LENGTH_LONG).show();
+        }
+
+        //retailers = new ArrayList<>(Arrays.asList("1","2"));
+        // displayAllRetailers(parent);
+        //setListenersToAllButtons(this);
+    }
+}
+
+class NewThread implements java.lang.Runnable
+{
+    Thread t;
+
+    public NewThread() {
+        t = new Thread(this, "seekBarThread");
     }
 
+    public void run()
+    {
+        try
+        {
 
+        }
+        catch(Exception ignored){}
+    }
 }

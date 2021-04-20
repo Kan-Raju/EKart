@@ -7,38 +7,45 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class FruitsCustomer extends AppCompatActivity {
 
-    TextView applequantity,orangequantity;
+    TextView applequantity, orangequantity;
     int countApple,countOrange = 0;
     Button CustomerAppleSelectBtn,CustomerOrangeSelectBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fruits_customer);
+        try {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_fruits_customer);
 
-        applequantity = (TextView) findViewById(R.id.CustomerAppleQuantityValue);
-        orangequantity = (TextView) findViewById(R.id.CustomerOrangeQuantityValue);
-        CustomerAppleSelectBtn=(Button)findViewById(R.id.CustomerAppleQauntitySelectButton);
-        CustomerOrangeSelectBtn=(Button)findViewById(R.id.CustomerOrangeQauntitySelectButton);
+            applequantity = (TextView) findViewById(R.id.CustomerAppleQuantityValue);
+            orangequantity = (TextView) findViewById(R.id.CustomerOrangeQuantityValue);
+            CustomerAppleSelectBtn = (Button) findViewById(R.id.CustomerAppleQauntitySelectButton);
+            CustomerOrangeSelectBtn = (Button) findViewById(R.id.CustomerOrangeQauntitySelectButton);
 
 
-        CustomerAppleSelectBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(FruitsCustomer.this,CustomerFruitAppleAddToCartPage.class);
-                startActivity(intent);
-            }
-        });
-        CustomerOrangeSelectBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(FruitsCustomer.this,CustomerFruitOrangeAddToCartPage.class);
-                startActivity(intent);
-            }
-        });
+            CustomerAppleSelectBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(FruitsCustomer.this, CustomerFruitAppleAddToCartPage.class);
+                    startActivity(intent);
+                }
+            });
+            CustomerOrangeSelectBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(FruitsCustomer.this, CustomerFruitOrangeAddToCartPage.class);
+                    startActivity(intent);
+                }
+            });
+        }
+        catch(Exception e)
+        {
+            Toast.makeText(this, "error here:" + e.toString(), Toast.LENGTH_LONG).show();
+        }
 
     }
     public void incrementapple(View v)
@@ -68,6 +75,32 @@ public class FruitsCustomer extends AppCompatActivity {
         orangequantity.setText("" + countOrange);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*
 package com.example.allpagesfinal;
