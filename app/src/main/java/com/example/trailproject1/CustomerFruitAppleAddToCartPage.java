@@ -26,6 +26,7 @@ public class CustomerFruitAppleAddToCartPage extends AppCompatActivity implement
 {
     String item = "Apple";
     int mod = 3;
+    int dup=7;
     ArrayList<String> vendors;
     ArrayList<RelativeLayout> layoutarr = new ArrayList<>();
     ArrayList<Button> addToCartBtnArr = new ArrayList<>();
