@@ -11,44 +11,68 @@
 
     <ScrollView
         android:id="@+id/CustomerFruitAppleVendorDisplay"
-        android:layout_width="408dp"
-        android:layout_height="619dp"
-        tools:layout_editor_absoluteY="56dp"
+        android:layout_width="383dp"
+        android:layout_height="387dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="200dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
-            android:id="@+id/outer_layout"
-            android:layout_width="408dp"
-            android:layout_height="619dp"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+    <Button
+        android:id="@+id/CustomerFruitAppleVendorSelectButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="19dp"
+        android:text="Select"
+        app:layout_constraintTop_toBottomOf="@+id/CustomerFruitAppleVendorDisplay"
+        tools:layout_editor_absoluteX="309dp"
+        tools:ignore="MissingConstraints" />
 
+    <TextView
+        android:id="@+id/CustomerFruitAppleTotalCostText"
+        android:layout_width="150dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="Total Cost:"
+        android:textColor="#0B0909"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="548dp"
+        tools:ignore="MissingConstraints" />
 
-        </LinearLayout>
+    <TextView
+        android:id="@+id/CustomerFruitAppleTotalCostquantity"
+        android:layout_width="89dp"
+        android:layout_height="49dp"
+        android:text="TextView"
+        android:textSize="24sp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="180dp"
+        tools:layout_editor_absoluteY="550dp" />
 
-    </ScrollView>
+    <Button
+        android:id="@+id/CustomerFruitAppleAddToCartButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add to Cart"
+        tools:layout_editor_absoluteX="264dp"
+        tools:layout_editor_absoluteY="645dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/CustomerFruitAppleSelectingOptionText"
+        android:layout_width="383dp"
+        android:layout_height="45dp"
+        android:text="Apple retailers list"
+        android:textColor="#0B0909"
+        android:textSize="30sp"
+        tools:layout_editor_absoluteX="14dp"
+        tools:layout_editor_absoluteY="20dp"
+        tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-<!--    android:id="@+id/CustomerFruitAppleVendorDisplay"-->
-<!--    android:layout_width="408dp"-->
-<!--    android:layout_height="619dp"-->
-<!--    app:layout_constraintBottom_toBottomOf="parent"-->
-<!--    app:layout_constraintEnd_toEndOf="1.0"-->
-<!--    app:layout_constraintStart_toStartOf="1.0"-->
-<!--    app:layout_constraintTop_toTopOf="parent">-->
-
-<!--<LinearLayout-->
-<!--android:id="@+id/outer_layout"-->
-<!--android:orientation="vertical"-->
-<!--android:layout_width="408dp"-->
-<!--android:layout_height="619dp"-->
-<!--app:layout_constraintBottom_toBottomOf="parent"-->
-<!--app:layout_constraintEnd_toEndOf="1.0"-->
-<!--app:layout_constraintStart_toStartOf="1.0"-->
-<!--app:layout_constraintTop_toTopOf="parent">-->

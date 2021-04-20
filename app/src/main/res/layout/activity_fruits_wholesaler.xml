@@ -101,6 +101,16 @@
             android:textColor="#0E0608"
             android:textSize="15dp"
             android:textStyle="bold" />
+        <TextView
+            android:id="@+id/WholesalerAppleQuantityValue"
+            android:layout_width="33dp"
+            android:layout_height="47dp"
+            android:layout_below="@id/WholesalerAppleQuantity"
+            android:layout_marginRight="3dp"
+            android:text="0"
+            android:gravity="center"
+            android:layout_toLeftOf="@id/WholesalerAppleQauntIncButton"
+            android:layout_toRightOf="@id/WholesalerAppleQauntDecButton" />
 
         <TextView
             android:id="@+id/WholesalerOrangeCost"
@@ -152,16 +162,7 @@
             android:layout_toRightOf="@id/WholesalerAppleImage"
             android:text="-" />
 
-        <TextView
-            android:id="@+id/WholesalerAppleQuantityValue"
-            android:layout_width="33dp"
-            android:layout_height="47dp"
-            android:layout_below="@id/WholesalerAppleQuantity"
-            android:layout_marginRight="3dp"
-            android:text="0"
-            android:gravity="center"
-            android:layout_toLeftOf="@id/WholesalerAppleQauntIncButton"
-            android:layout_toRightOf="@id/WholesalerAppleQauntDecButton" />
+
 
         <Button
             android:id="@+id/WholesalerAppleQauntIncButton"
