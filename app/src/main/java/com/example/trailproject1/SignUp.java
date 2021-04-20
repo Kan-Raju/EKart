@@ -108,6 +108,16 @@ public class SignUp extends AppCompatActivity {
                     if(isWholesalerBox.isChecked()){
                         user.put("userType","3");
                     }
+                    user.put("appleCost","0");
+                    user.put("appleQuantity","0");
+                    user.put("orangeCost","0");
+                    user.put("orangeQuantity","0");
+                    user.put("tomatoCost","0");
+                    user.put("tomatoQuantity","0");
+                    user.put("onionCost","0");
+                    user.put("onionQuantity","0");
+
+
 
                     docRef.set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
