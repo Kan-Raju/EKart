@@ -9,17 +9,13 @@ import java.util.Objects;
 
 public class Retailer
 {
+    private String rId;
     private  String name;
     private String city;
+
+
+
     private String email;
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     private int appC;
     private int appQ;
@@ -32,6 +28,14 @@ public class Retailer
 
     private int oninC;
     private int oninQ;
+
+    public String getrId() {
+        return rId;
+    }
+
+    public void setrId(String rId) {
+        this.rId = rId;
+    }
 
     public String getName() {
         return name;
@@ -47,6 +51,13 @@ public class Retailer
 
     public void setCity(String city) {
         this.city = city;
+    }
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public int getAppC() {
@@ -115,6 +126,7 @@ public class Retailer
 
     public Retailer(HashMap<String,String> dict)
     {
+        this.rId = dict.get("Id");
         this.name = dict.get("name");
         this.city = dict.get("city");
         this.email = dict.get("email");
@@ -135,6 +147,7 @@ public class Retailer
     public HashMap<String,String> toHashMap()
     {
         HashMap<String,String> hmap = new HashMap<>();
+        hmap.put("Id", this.rId);
         hmap.put("name",this.name);
         hmap.put("city",this.city);
         hmap.put("email",this.email);

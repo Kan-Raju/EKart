@@ -56,6 +56,10 @@ public class LoginActivity extends AppCompatActivity {
             nextBtn = findViewById(R.id.nextBtn);
             state = findViewById(R.id.state);
             codePicker = findViewById(R.id.ccp);
+
+            phoneNumber.setText("9440739000");
+
+
             nextBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -67,8 +71,9 @@ public class LoginActivity extends AppCompatActivity {
                             state.setText("Sending OTP...");
                             state.setVisibility(View.VISIBLE);
                             requestOTP(phoneNum);
-
-                        } else {
+                        }
+                        else
+                        {
                             phoneNumber.setError("Phone number is not valid");
                         }
                     } else {
@@ -126,15 +131,15 @@ public class LoginActivity extends AppCompatActivity {
                     try
                     {
                         //Toast.makeText(Register.this, "hi ra : " + documentSnapshot.toString() , Toast.LENGTH_SHORT).show();
-                        if (documentSnapshot.getString("userType").equals("customer") ){
+                        if (documentSnapshot.getString("userType").equals("customer")){
                             startActivity(new Intent(getApplicationContext(), MainMenuCustomer.class));
                             finish();
                         }
-                        if (documentSnapshot.getString("userType").equals("retailer")  ) {
+                        if (documentSnapshot.getString("userType").equals("retailer")) {
                             startActivity(new Intent(getApplicationContext(), MainMenuRetailer.class));
                             finish();
                         }
-                        if (documentSnapshot.getString("userType").equals("wholesaler") ) {
+                        if (documentSnapshot.getString("userType").equals("wholesaler")) {
                             startActivity(new Intent(getApplicationContext(), MainMenuWholesaler.class));
                             finish();
                         }
@@ -161,6 +166,9 @@ public class LoginActivity extends AppCompatActivity {
                 progressBar.setVisibility(View.GONE);
                 state.setVisibility(View.GONE);
                 codeEnter.setVisibility(View.VISIBLE);
+
+                codeEnter.setText("666666");
+
                 verificationId=s;
                 token=forceResendingToken;
                 nextBtn.setText("Verify");
