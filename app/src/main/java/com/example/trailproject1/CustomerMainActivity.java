@@ -1,18 +1,14 @@
 package com.example.trailproject1;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -28,8 +24,6 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.*;
 
 import static android.view.View.GONE;
-import static android.view.View.TEXT_ALIGNMENT_TEXT_START;
-import static android.view.View.VISIBLE;
 
 //class Order
 //{
@@ -42,8 +36,8 @@ import static android.view.View.VISIBLE;
 //    }
 //}
 
-public class CustomerFruitAppleAddToCartPage extends AppCompatActivity implements View.OnClickListener {
-    String searched_item = "apple";
+public class CustomerMainActivity extends AppCompatActivity implements View.OnClickListener {
+    String searched_item;// = "apple";
     int mod = 13;
 
     public static ArrayList<Retailer> retailers = new ArrayList<>();
@@ -83,12 +77,12 @@ public class CustomerFruitAppleAddToCartPage extends AppCompatActivity implement
             if(addUpdateCartBtnArr.get(pos).getText().toString().equalsIgnoreCase("Add to Cart"))
             {
                 HashMap<String, String> hmap = new HashMap<>();
-                hmap.put("cId",);
-                hmap.put("",);
-                hmap.put("",);
-                hmap.put("",);
-                hmap.put("",);
-                OrderItems obj = new OrderItems(hmap);
+//                hmap.put("cId",);
+//                hmap.put("",);
+//                hmap.put("",);
+//                hmap.put("",);
+//                hmap.put("",);
+                //OrderItems obj = new OrderItems(hmap);
             }
         }
         else if(tempId%mod == 9)
@@ -206,7 +200,7 @@ public class CustomerFruitAppleAddToCartPage extends AppCompatActivity implement
 
             TextView price_title = new TextView(this);
             price_title.setId(mod * pos + 4 + 130);
-            price_title.setText("Rs. " + getCost(pos) + " / " +"pc.");
+            price_title.setText("Rs. " + getCost(pos) + " / " +"1 pc.");
             price_title.setTextSize(20);
             RelativeLayout.LayoutParams price_titleParam = new RelativeLayout.LayoutParams(ht - 1, ht - 1);
             price_titleParam.leftMargin = 370;
@@ -409,7 +403,7 @@ public class CustomerFruitAppleAddToCartPage extends AppCompatActivity implement
                                     hmap.put("oninC", document.getString("onionCost"));
                                     hmap.put("oninQ", document.getString("onionQuantity"));
 
-                                    Toast.makeText(CustomerFruitAppleAddToCartPage.this, hmap.toString(), Toast.LENGTH_LONG).show();
+                                    Toast.makeText(CustomerMainActivity.this, hmap.toString(), Toast.LENGTH_LONG).show();
                                     try
                                     {
                                         Retailer r = new Retailer(hmap);
@@ -417,18 +411,18 @@ public class CustomerFruitAppleAddToCartPage extends AppCompatActivity implement
                                         retailers.add(r);
                                     }catch(Exception e)
                                     {
-                                        Toast.makeText(CustomerFruitAppleAddToCartPage.this, "error :"+e.toString(), Toast.LENGTH_LONG).show();
+                                        Toast.makeText(CustomerMainActivity.this, "error :"+e.toString(), Toast.LENGTH_LONG).show();
                                     }
                                 }
                                 else
                                 {
-                                    Toast.makeText(CustomerFruitAppleAddToCartPage.this, document.getString("userType"), Toast.LENGTH_LONG).show();
+                                    Toast.makeText(CustomerMainActivity.this, document.getString("userType"), Toast.LENGTH_LONG).show();
                                 }
                             }
                         }
                         else
                         {
-                            Toast.makeText(CustomerFruitAppleAddToCartPage.this, "task failed", Toast.LENGTH_LONG).show();
+                            Toast.makeText(CustomerMainActivity.this, "task failed", Toast.LENGTH_LONG).show();
                         }
                     }
                 });
@@ -448,12 +442,13 @@ public class CustomerFruitAppleAddToCartPage extends AppCompatActivity implement
         minusBtnArr = new ArrayList<>();
         countArr = new ArrayList<>();
         availableArr = new ArrayList<>();
+        priceTitleArr = new ArrayList<>();
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_customer_fruit_apple_add_to_cart_page);
+        setContentView(R.layout.activity_customer_main);
         search_space = findViewById(R.id.search_space);
         search_btn = findViewById(R.id.search_btn);
 
@@ -473,7 +468,7 @@ public class CustomerFruitAppleAddToCartPage extends AppCompatActivity implement
                 if(items.contains(searched_item)) {
                     clearFrontEnd();
                     displayAllRetailersOfSearchedItem(parent);
-                    setListenersToAllButtons(CustomerFruitAppleAddToCartPage.this);
+                    setListenersToAllButtons(CustomerMainActivity.this);
                 }
                 else
                 {

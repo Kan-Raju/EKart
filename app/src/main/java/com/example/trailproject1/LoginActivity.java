@@ -132,7 +132,7 @@ public class LoginActivity extends AppCompatActivity {
                     {
                         //Toast.makeText(Register.this, "hi ra : " + documentSnapshot.toString() , Toast.LENGTH_SHORT).show();
                         if (documentSnapshot.getString("userType").equals("customer")){
-                            startActivity(new Intent(getApplicationContext(), MainMenuCustomer.class));
+                            startActivity(new Intent(getApplicationContext(), CustomerMainActivity.class));
                             finish();
                         }
                         if (documentSnapshot.getString("userType").equals("retailer")) {

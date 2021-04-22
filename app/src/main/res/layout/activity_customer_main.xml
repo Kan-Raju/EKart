@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="#8AF383"
     android:orientation="vertical"
-    tools:context=".CustomerFruitAppleAddToCartPage">
+    tools:context=".CustomerMainActivity">
 
     <LinearLayout
         android:id="@+id/search"
