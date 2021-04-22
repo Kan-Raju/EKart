@@ -29,32 +29,98 @@ import java.util.*;
 
 import static android.view.View.GONE;
 import static android.view.View.TEXT_ALIGNMENT_TEXT_START;
+import static android.view.View.VISIBLE;
 
+//class Order
+//{
+//    public static int descending(OrderItems a, OrderItems b)
+//    {
+//        int x;
+//        x = Double.parseDouble(a.getTimeStamp()) > Double.parseDouble(a.getTimeStamp()) ? 1:-1;
+//        if(a.equals(b)) x = 0;
+//        return x;
+//    }
+//}
 
 public class CustomerFruitAppleAddToCartPage extends AppCompatActivity implements View.OnClickListener {
     String searched_item = "apple";
-    int mod = 12;
+    int mod = 13;
 
     public static ArrayList<Retailer> retailers = new ArrayList<>();
+    public static ArrayList<OrderItems> cartItems = new ArrayList<>();
+
     ArrayList<String> items = new ArrayList<>(Arrays.asList("apple","orange","tomato","onion"));
+
     ArrayList<RelativeLayout> layoutarr = new ArrayList<>();
-    ArrayList<Button> addToCartBtnArr = new ArrayList<>();
+
+    ArrayList<Button> addUpdateCartBtnArr = new ArrayList<>();
+    ArrayList<TextView> inCartArr = new ArrayList<>();
+
+    ArrayList<TextView> priceTitleArr = new ArrayList<>();
     ArrayList<Button> plsBtnArr = new ArrayList<>();
     ArrayList<Button> minusBtnArr = new ArrayList<>();
     ArrayList<TextView> countArr = new ArrayList<>();
+
+    ArrayList<Integer> availableArr = new ArrayList<>();
+
     EditText search_space;
     Button search_btn;
     LinearLayout parent;
 
 
     @Override
-    public void onClick(View v) {
+    public void onClick(View v)
+    {
+        long id = v.getId();
 
+        int tempId = (int)(id-130);
+
+        int pos = tempId/mod;
+
+        if(tempId%mod == 6)
+        {
+            //Toast.makeText(this, "add to cart button pressed.", Toast.LENGTH_SHORT).show();
+            if(addUpdateCartBtnArr.get(pos).getText().toString().equalsIgnoreCase("Add to Cart"))
+            {
+                HashMap<String, String> hmap = new HashMap<>();
+                hmap.put("cId",);
+                hmap.put("",);
+                hmap.put("",);
+                hmap.put("",);
+                hmap.put("",);
+                OrderItems obj = new OrderItems(hmap);
+            }
+        }
+        else if(tempId%mod == 9)
+        {
+            TextView temp = countArr.get(pos);
+            int curr = Integer.parseInt(temp.getText().toString());
+            if(curr > 0) {
+                curr--;
+                temp.setText(Integer.toString(curr));
+                int price = getCost(pos);
+                priceTitleArr.get(pos).setText("Rs. " + Integer.toString(price*curr) + " / " + curr +" pcs.");
+            }
+        }
+        else if(tempId%mod == 11)
+        {
+            TextView temp = countArr.get(pos);
+            int curr = Integer.parseInt(temp.getText().toString());
+            if(curr < availableArr.get(pos)) {
+                ++curr;
+                temp.setText(Integer.toString(curr));
+                int price = getCost(pos);
+                priceTitleArr.get(pos).setText("Rs. " + Integer.toString(price * curr) + " / " + curr + " pcs.");
+            }
+        }
 
     }
 
-    private void setListenersToAllButtons(Context context) {
-
+    private void setListenersToAllButtons(Context context)
+    {
+        for(Button addUpdateCartBtn:addUpdateCartBtnArr) addUpdateCartBtn.setOnClickListener(this);
+        for(Button delBut:plsBtnArr) delBut.setOnClickListener(this);
+        for(Button playBut:minusBtnArr) playBut.setOnClickListener(this);
     }
     private String getCount(int pos)
     {
@@ -91,8 +157,22 @@ public class CustomerFruitAppleAddToCartPage extends AppCompatActivity implement
                 img.setImageResource(R.drawable.bananafruit);
         }
     }
+    private int getCost(int pos)
+    {
+        switch(searched_item) {
+            case "apple":
+                return retailers.get(pos).getAppC();
+            case "orange":
+                return retailers.get(pos).getOrngC();
+            case "tomato":
+                return retailers.get(pos).getTmtC();
+            case "onion":
+                return retailers.get(pos).getOninC();
+            default:
+                return 0;
+        }
+    }
 
-    //@RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     private RelativeLayout getLayout(Context context, int pos)
     {
         RelativeLayout layout = new RelativeLayout(context);
@@ -100,10 +180,10 @@ public class CustomerFruitAppleAddToCartPage extends AppCompatActivity implement
         try {
             layout.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, ht));
             layout.setBackgroundColor(Color.WHITE);
-            layout.setId(mod * pos + 1);
+            layout.setId(mod * pos + 1 + 130);
 
             ImageView photo = new ImageView(this);
-            photo.setId(mod*pos + 2);
+            photo.setId(mod*pos + 2 + 130);
             setImage(photo);
             RelativeLayout.LayoutParams photoParam = new RelativeLayout.LayoutParams(ht - 1, ht - 1);
             photoParam.leftMargin = 50;
@@ -114,7 +194,7 @@ public class CustomerFruitAppleAddToCartPage extends AppCompatActivity implement
 
 
             TextView itemName = new TextView(this);
-            itemName.setId(mod * pos + 3);
+            itemName.setId(mod * pos + 3 + 130);
             itemName.setText(searched_item);
             itemName.setTextSize(24);
             RelativeLayout.LayoutParams itemNameParam = new RelativeLayout.LayoutParams(ht - 1, ht - 1);
@@ -124,12 +204,9 @@ public class CustomerFruitAppleAddToCartPage extends AppCompatActivity implement
             itemNameParam.height = 200;
             itemName.setLayoutParams(itemNameParam);
 
-            int value = 400;
-            int nItems = 10;
-
             TextView price_title = new TextView(this);
-            price_title.setId(mod * pos + 4);
-            price_title.setText("Rs. " + Integer.toString(value * nItems) + " / " + Integer.toString(nItems) + "pcs.");
+            price_title.setId(mod * pos + 4 + 130);
+            price_title.setText("Rs. " + getCost(pos) + " / " +"pc.");
             price_title.setTextSize(20);
             RelativeLayout.LayoutParams price_titleParam = new RelativeLayout.LayoutParams(ht - 1, ht - 1);
             price_titleParam.leftMargin = 370;
@@ -139,7 +216,7 @@ public class CustomerFruitAppleAddToCartPage extends AppCompatActivity implement
             price_title.setLayoutParams(price_titleParam);
 
             TextView available = new TextView(this);
-            available.setId(mod * pos + 4);
+            available.setId(mod * pos + 5 + 130);
             available.setText("max pcs: " + getCount(pos));
             available.setTextSize(20);
             RelativeLayout.LayoutParams availableParam = new RelativeLayout.LayoutParams(ht - 1, ht - 1);
@@ -150,22 +227,51 @@ public class CustomerFruitAppleAddToCartPage extends AppCompatActivity implement
             available.setLayoutParams(availableParam);
 
 
-            Button addToCart = new Button(this);
-            addToCart.setId(mod * pos + 5);
-            addToCart.setText("Add to Cart");
-            addToCart.setTextSize(10);
-            addToCart.setTextColor(Color.BLACK);
-            addToCart.setBackgroundColor(Color.WHITE);
-            RelativeLayout.LayoutParams addToCartParam = new RelativeLayout.LayoutParams(ht - 1, ht - 1);
-            addToCartParam.leftMargin = 950;
-            addToCartParam.topMargin = 90;
-            addToCartParam.width = 400;
-            addToCartParam.height = 120;
-            addToCart.setLayoutParams(addToCartParam);
+            Button addUpdateCart = new Button(this);
+            addUpdateCart.setId(mod * pos + 6 + 130);
+            addUpdateCart.setText("Add to Cart");
+            addUpdateCart.setTextSize(10);
+            addUpdateCart.setTextColor(Color.BLACK);
+            addUpdateCart.setBackgroundColor(Color.WHITE);
+            RelativeLayout.LayoutParams addUpdateCartParam = new RelativeLayout.LayoutParams(ht - 1, ht - 1);
+            addUpdateCartParam.leftMargin = 950;
+            addUpdateCartParam.topMargin = 90;
+            addUpdateCartParam.width = 400;
+            addUpdateCartParam.height = 120;
+            addUpdateCart.setLayoutParams(addUpdateCartParam);
+
+//            Button updateCart = new Button(this);
+//            updateCart.setId(mod * pos + 7);
+//            updateCart.setText("update Cart");
+//            updateCart.setTextSize(10);
+//            updateCart.setTextColor(Color.BLACK);
+//            updateCart.setBackgroundColor(Color.WHITE);
+//            RelativeLayout.LayoutParams updateCartParam = new RelativeLayout.LayoutParams(ht - 1, ht - 1);
+//            updateCartParam.leftMargin = 950;
+//            updateCartParam.topMargin = 90;
+//            updateCartParam.width = 400;
+//            updateCartParam.height = 120;
+//            updateCart.setLayoutParams(updateCartParam);
+//            updateCart.setVisibility(GONE);
+
+
+            TextView inCart = new Button(this);
+            inCart.setId(mod * pos + 8 + 130);
+            inCart.setText("In Cart");
+            inCart.setTextSize(10);
+            inCart.setTextColor(Color.BLACK);
+            inCart.setBackgroundColor(Color.WHITE);
+            RelativeLayout.LayoutParams inCartParam = new RelativeLayout.LayoutParams(ht - 1, ht - 1);
+            inCartParam.leftMargin = 950;
+            inCartParam.topMargin = 90;
+            inCartParam.width = 400;
+            inCartParam.height = 120;
+            inCart.setLayoutParams(inCartParam);
+            inCart.setVisibility(GONE);
 
 
             Button minusBtn = new Button(this);
-            minusBtn.setId(mod*pos + 6);
+            minusBtn.setId(mod*pos + 9 + 130);
             minusBtn.setText(" - ");
             minusBtn.setTextSize(10);
             minusBtn.setTextColor(Color.BLACK);
@@ -178,8 +284,8 @@ public class CustomerFruitAppleAddToCartPage extends AppCompatActivity implement
             minusBtn.setLayoutParams(minusBtnParam);
 
             TextView count = new TextView(this);
-            count.setId(mod * pos + 9);
-            count.setText("01");
+            count.setId(mod * pos + 10 + 130);
+            count.setText("0");
             count.setTextSize(18);
             RelativeLayout.LayoutParams countParam = new RelativeLayout.LayoutParams(ht - 1, ht - 1);
             countParam.leftMargin = 1100;
@@ -190,7 +296,7 @@ public class CustomerFruitAppleAddToCartPage extends AppCompatActivity implement
 
 
             Button plusBtn = new Button(this);
-            plusBtn.setId(mod*pos + 6);
+            plusBtn.setId(mod*pos + 11 + 130);
             plusBtn.setText(" + ");
             plusBtn.setTextSize(10);
             plusBtn.setTextColor(Color.BLACK);
@@ -204,7 +310,7 @@ public class CustomerFruitAppleAddToCartPage extends AppCompatActivity implement
 
 
             TextView seller = new TextView(this);
-            seller.setId(mod * pos + 9);
+            seller.setId(mod * pos + 12 + 130);
             seller.setText("Seller : "+retailers.get(pos).getName()+" \n "+"           "+retailers.get(pos).getCity());
             seller.setTextSize(18);
             RelativeLayout.LayoutParams sellerParam = new RelativeLayout.LayoutParams(ht - 1, ht - 1);
@@ -215,17 +321,34 @@ public class CustomerFruitAppleAddToCartPage extends AppCompatActivity implement
             seller.setLayoutParams(sellerParam);
 
             layoutarr.add(layout);
-            addToCartBtnArr.add(addToCart);
+            addUpdateCartBtnArr.add(addUpdateCart);
+            inCartArr.add(inCart);
+
+            priceTitleArr.add(price_title);
+
+            plsBtnArr.add(plusBtn);
+            minusBtnArr.add(minusBtn);
+            countArr.add(count);
+
+            String f = available.getText().toString();
+            availableArr.add(Integer.parseInt(f.substring(9)));
 
             layout.addView(photo);
+
             layout.addView(itemName);
             layout.addView(price_title);
-            layout.addView(addToCart);
+            layout.addView(available);
+
+            layout.addView(addUpdateCart);
+            // layout.addView(updateCart);
+            layout.addView(inCart);
+
             layout.addView(minusBtn);
             layout.addView(count);
             layout.addView(plusBtn);
+
             layout.addView(seller);
-            layout.addView(available);
+
 
             //setContentView(layout);
         } catch (Exception e) {
@@ -287,8 +410,11 @@ public class CustomerFruitAppleAddToCartPage extends AppCompatActivity implement
                                     hmap.put("oninQ", document.getString("onionQuantity"));
 
                                     Toast.makeText(CustomerFruitAppleAddToCartPage.this, hmap.toString(), Toast.LENGTH_LONG).show();
-                                    try {
-                                        retailers.add(new Retailer(hmap));
+                                    try
+                                    {
+                                        Retailer r = new Retailer(hmap);
+                                        //if(!retailers.contains(r))
+                                        retailers.add(r);
                                     }catch(Exception e)
                                     {
                                         Toast.makeText(CustomerFruitAppleAddToCartPage.this, "error :"+e.toString(), Toast.LENGTH_LONG).show();
@@ -310,12 +436,18 @@ public class CustomerFruitAppleAddToCartPage extends AppCompatActivity implement
 
     private void clearFrontEnd()
     {
-        // deleteLayout
-
+        // delete all Layouts
+        for(RelativeLayout layout:layoutarr)
+            parent.removeView(layout);
 
         //clear in all arrays
-
-
+        layoutarr = new ArrayList<>();
+        addUpdateCartBtnArr = new ArrayList<>();
+        inCartArr = new ArrayList<>();
+        plsBtnArr = new ArrayList<>();
+        minusBtnArr = new ArrayList<>();
+        countArr = new ArrayList<>();
+        availableArr = new ArrayList<>();
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -350,6 +482,15 @@ public class CustomerFruitAppleAddToCartPage extends AppCompatActivity implement
                 }
             }
         });
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        super.onBackPressed();
+        clearFrontEnd();
+        retailers = new ArrayList<>();
+        finish();
     }
 
 }

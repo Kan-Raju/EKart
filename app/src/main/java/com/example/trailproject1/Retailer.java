@@ -166,4 +166,17 @@ public class Retailer
 
         return hmap;
     }
+
+    @Override
+    public boolean equals(Object v) {
+        try
+        {
+            Retailer r = (Retailer) v;
+            return rId.equals(r.getrId());
+        }
+        catch(Exception e)
+        {
+            return false;
+        }
+    }
 }
