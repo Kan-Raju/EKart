@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Trailproject1">
-        <activity android:name=".WholesalerOnionSelect"></activity>
+        <activity android:name=".CustomerPaymentOptions"></activity>
+        <activity android:name=".CustomerFinalPage" />
+        <activity android:name=".WholesalerOnionSelect" />
         <activity android:name=".WholesalerTomatoSelect" />
         <activity android:name=".WholesalerOrangeSelect" />
         <activity android:name=".WholesalerAppleSelect" />
