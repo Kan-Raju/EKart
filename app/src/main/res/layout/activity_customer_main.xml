@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/CustomerFruitAppleVendorDisplay"
+        app:layout_constraintBottom_toTopOf="@+id/outerLayoutScroll"
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
@@ -23,7 +23,7 @@
             android:layout_height="match_parent"
             android:hint="search"
             android:textSize = "18sp"
-            app:layout_constraintBottom_toTopOf="@+id/CustomerFruitAppleVendorDisplay" />
+            app:layout_constraintBottom_toTopOf="@+id/outerLayoutScroll" />
 
         <Button
             android:id="@+id/search_btn"
@@ -34,7 +34,7 @@
     </LinearLayout>
 
     <ScrollView
-        android:id="@+id/CustomerFruitAppleVendorDisplay"
+        android:id="@+id/outerLayoutScroll"
         android:layout_width="408dp"
         android:layout_height="600dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -62,7 +62,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/CustomerFruitAppleVendorDisplay"
+        app:layout_constraintTop_toBottomOf="@+id/outerLayoutScroll"
         app:layout_constraintBottom_toTopOf="parent">
 
         <Button
@@ -71,7 +71,7 @@
             android:layout_height="match_parent"
             android:text="previous orders"
             android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/CustomerFruitAppleVendorDisplay" />
+            app:layout_constraintBottom_toTopOf="@+id/outerLayoutScroll" />
 
         <Button
             android:id="@+id/mycartbtn"

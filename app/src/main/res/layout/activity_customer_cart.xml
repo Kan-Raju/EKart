@@ -28,7 +28,7 @@
     </LinearLayout>
 
     <ScrollView
-        android:id="@+id/CustomerFruitAppleVendorDisplay"
+        android:id="@+id/outerLayoutScroll"
         android:layout_width="408dp"
         android:layout_height="602dp"
         app:layout_constraintBottom_toBottomOf="parent"
