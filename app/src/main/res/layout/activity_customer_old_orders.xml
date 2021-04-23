@@ -30,7 +30,7 @@
     <ScrollView
         android:id="@+id/oldordersspace"
         android:layout_width="408dp"
-        android:layout_height="612dp"
+        android:layout_height="598dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

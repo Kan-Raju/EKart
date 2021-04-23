@@ -36,7 +36,7 @@
     <ScrollView
         android:id="@+id/CustomerFruitAppleVendorDisplay"
         android:layout_width="408dp"
-        android:layout_height="612dp"
+        android:layout_height="600dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -70,7 +70,7 @@
             android:layout_width="203dp"
             android:layout_height="match_parent"
             android:text="previous orders"
-            android:textSize="18sp"
+            android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/CustomerFruitAppleVendorDisplay" />
 
         <Button

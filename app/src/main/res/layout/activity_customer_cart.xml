@@ -30,7 +30,7 @@
     <ScrollView
         android:id="@+id/CustomerFruitAppleVendorDisplay"
         android:layout_width="408dp"
-        android:layout_height="612dp"
+        android:layout_height="602dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

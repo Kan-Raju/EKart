@@ -264,10 +264,14 @@ public class CustomerMainActivity extends AppCompatActivity implements View.OnCl
         }
     }
 
+    private int x(double x)
+    {
+        return (int) (x * this.getResources().getDisplayMetrics().widthPixels);
+    }
     private RelativeLayout getLayout(Context context, int pos)
     {
         RelativeLayout layout = new RelativeLayout(context);
-        int ht = (int) (200 * this.getResources().getDisplayMetrics().density + 0.5f);
+        int ht = (int) (250 * this.getResources().getDisplayMetrics().density + 0.5f);
         try {
             layout.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, ht));
             layout.setBackgroundColor(Color.WHITE);
@@ -325,7 +329,7 @@ public class CustomerMainActivity extends AppCompatActivity implements View.OnCl
             addUpdateCart.setTextColor(Color.BLACK);
             addUpdateCart.setBackgroundColor(Color.WHITE);
             RelativeLayout.LayoutParams addUpdateCartParam = new RelativeLayout.LayoutParams(ht - 1, ht - 1);
-            addUpdateCartParam.leftMargin = 950;
+            addUpdateCartParam.leftMargin = x(3.4/5.0);
             addUpdateCartParam.topMargin = 90;
             addUpdateCartParam.width = 400;
             addUpdateCartParam.height = 120;
@@ -368,7 +372,7 @@ public class CustomerMainActivity extends AppCompatActivity implements View.OnCl
             minusBtn.setTextColor(Color.BLACK);
             minusBtn.setBackgroundColor(Color.WHITE);
             RelativeLayout.LayoutParams minusBtnParam = new RelativeLayout.LayoutParams(ht - 1, ht - 1);
-            minusBtnParam.leftMargin = 950;
+            minusBtnParam.leftMargin = x(3.4/5.0);
             minusBtnParam.topMargin = 250;
             minusBtnParam.width = 120;
             minusBtnParam.height = 100;
@@ -379,7 +383,7 @@ public class CustomerMainActivity extends AppCompatActivity implements View.OnCl
             count.setText("0");
             count.setTextSize(18);
             RelativeLayout.LayoutParams countParam = new RelativeLayout.LayoutParams(ht - 1, ht - 1);
-            countParam.leftMargin = 1100;
+            countParam.leftMargin = x(3.936/5.0);
             countParam.topMargin = 250;
             countParam.width = 100;
             countParam.height = 100;
@@ -393,7 +397,7 @@ public class CustomerMainActivity extends AppCompatActivity implements View.OnCl
             plusBtn.setTextColor(Color.BLACK);
             plusBtn.setBackgroundColor(Color.WHITE);
             RelativeLayout.LayoutParams plusBtnParam = new RelativeLayout.LayoutParams(ht - 1, ht - 1);
-            plusBtnParam.leftMargin = 1200;
+            plusBtnParam.leftMargin = x(4.294/5.0);
             plusBtnParam.topMargin = 250;
             plusBtnParam.width = 120;
             plusBtnParam.height = 100;
