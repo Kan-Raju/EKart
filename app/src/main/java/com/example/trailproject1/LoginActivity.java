@@ -46,8 +46,6 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         try {
-            int x = 2;
-            int y=7;
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_login);
             fAuth = FirebaseAuth.getInstance();
@@ -58,6 +56,10 @@ public class LoginActivity extends AppCompatActivity {
             nextBtn = findViewById(R.id.nextBtn);
             state = findViewById(R.id.state);
             codePicker = findViewById(R.id.ccp);
+
+            // phoneNumber.setText("9440739000");
+
+
             nextBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -69,8 +71,9 @@ public class LoginActivity extends AppCompatActivity {
                             state.setText("Sending OTP...");
                             state.setVisibility(View.VISIBLE);
                             requestOTP(phoneNum);
-
-                        } else {
+                        }
+                        else
+                        {
                             phoneNumber.setError("Phone number is not valid");
                         }
                     } else {
@@ -110,7 +113,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    checkUserProfile();
+                    checkUserProfileAndRedirectToNextPage();
                 }
                 else {
                     Toast.makeText(LoginActivity.this,"Authentication failed ",Toast.LENGTH_SHORT).show();
@@ -119,7 +122,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void checkUserProfile() {
+    private void checkUserProfileAndRedirectToNextPage() {
         DocumentReference docRef=fStore.collection("users").document(fAuth.getCurrentUser().getUid());
         docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
@@ -128,15 +131,15 @@ public class LoginActivity extends AppCompatActivity {
                     try
                     {
                         //Toast.makeText(Register.this, "hi ra : " + documentSnapshot.toString() , Toast.LENGTH_SHORT).show();
-                        if (documentSnapshot.getString("userType").equals("1") ){
-                            startActivity(new Intent(getApplicationContext(), MainMenuCustomer.class));
+                        if (documentSnapshot.getString("userType").equals("customer")){
+                            startActivity(new Intent(getApplicationContext(), CustomerMainActivity.class));
                             finish();
                         }
-                        if (documentSnapshot.getString("userType").equals("2")  ) {
+                        if (documentSnapshot.getString("userType").equals("retailer")) {
                             startActivity(new Intent(getApplicationContext(), MainMenuRetailer.class));
                             finish();
                         }
-                        if (documentSnapshot.getString("userType").equals("3") ) {
+                        if (documentSnapshot.getString("userType").equals("wholesaler")) {
                             startActivity(new Intent(getApplicationContext(), MainMenuWholesaler.class));
                             finish();
                         }
@@ -163,6 +166,9 @@ public class LoginActivity extends AppCompatActivity {
                 progressBar.setVisibility(View.GONE);
                 state.setVisibility(View.GONE);
                 codeEnter.setVisibility(View.VISIBLE);
+
+                // codeEnter.setText("666666");
+
                 verificationId=s;
                 token=forceResendingToken;
                 nextBtn.setText("Verify");

@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class CustomerVegetableTomatoAddToCartPage extends AppCompatActivity {
+public class CustomerCart extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_customer_vegetable_tomato_add_to_cart_page);
+        setContentView(R.layout.activity_customer_cart);
+
+
     }
 }
