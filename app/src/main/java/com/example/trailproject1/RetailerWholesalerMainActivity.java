@@ -25,12 +25,12 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.*;
 
+public class RetailerWholesalerMainActivity extends AppCompatActivity implements View.OnClickListener {
 
-public class CustomerMainActivity extends AppCompatActivity implements View.OnClickListener {
     String searched_item;// = "apple";
     int mod = 13;
 
-    public static ArrayList<Retailer> retailers = new ArrayList<>();
+    public static ArrayList<Retailer> wholesalers = new ArrayList<>();
     public static ArrayList<OrderItems> cartItems = new ArrayList<>();
 
     ArrayList<String> items = new ArrayList<>(Arrays.asList("apple","orange","tomato","onion"));
@@ -57,11 +57,11 @@ public class CustomerMainActivity extends AppCompatActivity implements View.OnCl
     private int findCartItemLoc(int pos)
     {
         HashMap<String, String> hmap = new HashMap<>();
-        hmap.put("cId", FirebaseAuth.getInstance().getCurrentUser().getUid());
+        hmap.put("cId", FirebaseAuth.getInstance().getCurrentUser().getUid()); //doubt cId
         hmap.put("itemName",searched_item);
         int c = Integer.parseInt(countArr.get(pos).getText().toString());
         hmap.put("count",countArr.get(pos).getText().toString());
-        hmap.put("sellerId",retailers.get(pos).getrId());
+        hmap.put("sellerId",wholesalers.get(pos).getrId());
         hmap.put("totalPrice",Integer.toString(getCost(pos)*c));
         hmap.put("timeStamp",null);
         hmap.put("status","cart order");
@@ -126,7 +126,7 @@ public class CustomerMainActivity extends AppCompatActivity implements View.OnCl
                 hmap.put("itemName",searched_item);
                 int c = Integer.parseInt(countArr.get(pos).getText().toString());
                 hmap.put("count",countArr.get(pos).getText().toString());
-                hmap.put("sellerId",retailers.get(pos).getrId());
+                hmap.put("sellerId",wholesalers.get(pos).getrId());
                 hmap.put("totalPrice",Integer.toString(getCost(pos)*c));
                 hmap.put("timeStamp",null);
                 hmap.put("status","cart order");
@@ -200,8 +200,8 @@ public class CustomerMainActivity extends AppCompatActivity implements View.OnCl
                 alterButton(pos, btn, temp);
             }
         }
-
     }
+
 
     private void setListenersToAllButtons(Context context)
     {
@@ -210,18 +210,17 @@ public class CustomerMainActivity extends AppCompatActivity implements View.OnCl
         for(Button playBut:minusBtnArr) playBut.setOnClickListener(this);
     }
 
-
     private String getCount(int pos)
     {
         switch (searched_item) {
             case "apple":
-                return Integer.toString(retailers.get(pos).getAppQ());
+                return Integer.toString(wholesalers.get(pos).getAppQ());
             case "orange":
-                return Integer.toString(retailers.get(pos).getOrngQ());
+                return Integer.toString(wholesalers.get(pos).getOrngQ());
             case "tomato":
-                return Integer.toString(retailers.get(pos).getTmtQ());
+                return Integer.toString(wholesalers.get(pos).getTmtQ());
             case "onion":
-                return Integer.toString(retailers.get(pos).getOninQ());
+                return Integer.toString(wholesalers.get(pos).getOninQ());
             default:
                 return "0";
         }
@@ -252,13 +251,13 @@ public class CustomerMainActivity extends AppCompatActivity implements View.OnCl
     {
         switch(searched_item) {
             case "apple":
-                return retailers.get(pos).getAppC();
+                return wholesalers.get(pos).getAppC();
             case "orange":
-                return retailers.get(pos).getOrngC();
+                return wholesalers.get(pos).getOrngC();
             case "tomato":
-                return retailers.get(pos).getTmtC();
+                return wholesalers.get(pos).getTmtC();
             case "onion":
-                return retailers.get(pos).getOninC();
+                return wholesalers.get(pos).getOninC();
             default:
                 return 0;
         }
@@ -402,7 +401,7 @@ public class CustomerMainActivity extends AppCompatActivity implements View.OnCl
 
             TextView seller = new TextView(this);
             seller.setId(mod * pos + 12 + 130);
-            seller.setText("Seller : "+retailers.get(pos).getName()+" \n "+"           "+retailers.get(pos).getCity());
+            seller.setText("Seller : "+wholesalers.get(pos).getName()+" \n "+"           "+wholesalers.get(pos).getCity());
             seller.setTextSize(18);
             RelativeLayout.LayoutParams sellerParam = new RelativeLayout.LayoutParams(ht - 1, ht - 1);
             sellerParam.leftMargin = 80;
@@ -452,22 +451,21 @@ public class CustomerMainActivity extends AppCompatActivity implements View.OnCl
     {
         switch(searched_item){
             case "apple":
-                return retailers.get(pos).getAppQ() > 0;
+                return wholesalers.get(pos).getAppQ() > 0;
             case "orange":
-                return retailers.get(pos).getOrngQ() > 0;
+                return wholesalers.get(pos).getOrngQ() > 0;
             case "tomato":
-                return retailers.get(pos).getTmtQ() > 0;
+                return wholesalers.get(pos).getTmtQ() > 0;
             case "onion" :
-                return retailers.get(pos).getOninQ() > 0;
+                return wholesalers.get(pos).getOninQ() > 0;
             default:
                 return false;
         }
     }
 
-
     private void displayAllRetailersOfSearchedItem(LinearLayout parent) {
         RelativeLayout inner;
-        for (int retailer_pos = 0; retailer_pos < retailers.size(); retailer_pos++)
+        for (int retailer_pos = 0; retailer_pos < wholesalers.size(); retailer_pos++)
         {
             if(itemAvailable(retailer_pos)) {
                 inner = getLayout(this, retailer_pos);
@@ -506,10 +504,10 @@ public class CustomerMainActivity extends AppCompatActivity implements View.OnCl
                                     {
                                         Retailer r = new Retailer(hmap);
                                         //if(!retailers.contains(r))
-                                        retailers.add(r);
+                                        wholesalers.add(r);
                                     }catch(Exception e)
                                     {
-                                        Toast.makeText(CustomerMainActivity.this, "error :"+e.toString(), Toast.LENGTH_LONG).show();
+                                        Toast.makeText(RetailerWholesalerMainActivity.this, "error :"+e.toString(), Toast.LENGTH_LONG).show();
                                     }
                                 }
 //                                else
@@ -520,7 +518,7 @@ public class CustomerMainActivity extends AppCompatActivity implements View.OnCl
                         }
                         else
                         {
-                            Toast.makeText(CustomerMainActivity.this, "task failed", Toast.LENGTH_LONG).show();
+                            Toast.makeText(RetailerWholesalerMainActivity.this, "task failed", Toast.LENGTH_LONG).show();
                         }
                     }
                 });
@@ -545,16 +543,16 @@ public class CustomerMainActivity extends AppCompatActivity implements View.OnCl
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_customer_main);
-        search_space = findViewById(R.id.search_space);
-        search_btn = findViewById(R.id.search_btn);
+        setContentView(R.layout.activity_retailer_wholesaler_main);
 
-        prevOrdsBtn = findViewById(R.id.previousorders);
-        myCartBtn = findViewById(R.id.mycartbtn);
+        search_space = findViewById(R.id.RetailerWholesalerMainActivitysearch_space);
+        search_btn = findViewById(R.id.RetailerWholesalerMainActivitysearch_btn);
 
-        parent = findViewById(R.id.outer_layout);
+        prevOrdsBtn = findViewById(R.id.RetailerWholesalerMainActivitypreviousorders);
+        myCartBtn = findViewById(R.id.RetailerWholesalerMainActivitymycartbtn);
+
+        parent = findViewById(R.id.RetailerWholesalerMainActivityouter_layout);
 
         try {
             getAllRetailersFromFirebaseAndFillRetailersArray(this);
@@ -570,7 +568,7 @@ public class CustomerMainActivity extends AppCompatActivity implements View.OnCl
                 if(items.contains(searched_item)) {
                     clearFrontEnd();
                     displayAllRetailersOfSearchedItem(parent);
-                    setListenersToAllButtons(CustomerMainActivity.this);
+                    setListenersToAllButtons(RetailerWholesalerMainActivity.this);
                 }
                 else
                 {
@@ -599,13 +597,12 @@ public class CustomerMainActivity extends AppCompatActivity implements View.OnCl
         });
     }
 
+
     @Override
-    public void onBackPressed()
-    {
+    public void onBackPressed() {
         super.onBackPressed();
         clearFrontEnd();
-        retailers = new ArrayList<>();
+        wholesalers = new ArrayList<>();
         finish();
     }
-
 }

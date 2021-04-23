@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/RetailerWholesalerMainActivityCustomerFruitAppleSelectPage"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#8AF383"
+    android:orientation="vertical"
+    tools:context=".RetailerWholesalerMainActivity">
+
+    <LinearLayout
+        android:id="@+id/RetailerWholesalerMainActivitysearch"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/RetailerWholesalerMainActivityCustomerFruitAppleVendorDisplay"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/RetailerWholesalerMainActivitysearch_space"
+            android:layout_width="302dp"
+            android:layout_height="match_parent"
+            android:hint="search"
+            android:textSize = "18sp"
+            app:layout_constraintBottom_toTopOf="@+id/RetailerWholesalerMainActivityCustomerFruitAppleVendorDisplay" />
+
+        <Button
+            android:id="@+id/RetailerWholesalerMainActivitysearch_btn"
+            android:layout_width="105dp"
+            android:layout_height="match_parent"
+            android:text="search" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/RetailerWholesalerMainActivityCustomerFruitAppleVendorDisplay"
+        android:layout_width="408dp"
+        android:layout_height="612dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteY="56dp">
+
+        <LinearLayout
+            android:id="@+id/RetailerWholesalerMainActivityouter_layout"
+            android:layout_width="408dp"
+            android:layout_height="619dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+        </LinearLayout>
+
+    </ScrollView>
+    <LinearLayout
+        android:id="@+id/RetailerWholesalerMainActivityfurtherbtns"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/RetailerWholesalerMainActivityCustomerFruitAppleVendorDisplay"
+        app:layout_constraintBottom_toTopOf="parent">
+
+        <Button
+            android:id="@+id/RetailerWholesalerMainActivitypreviousorders"
+            android:layout_width="203dp"
+            android:layout_height="match_parent"
+            android:text="previous orders"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/RetailerWholesalerMainActivityCustomerFruitAppleVendorDisplay" />
+
+        <Button
+            android:id="@+id/RetailerWholesalerMainActivitymycartbtn"
+            android:layout_width="208dp"
+            android:layout_height="match_parent"
+            android:text="my cart" />
+
+    </LinearLayout>
+</LinearLayout>

@@ -136,7 +136,7 @@ public class LoginActivity extends AppCompatActivity {
                             finish();
                         }
                         if (documentSnapshot.getString("userType").equals("retailer")) {
-                            startActivity(new Intent(getApplicationContext(), MainMenuRetailer.class));
+                            startActivity(new Intent(getApplicationContext(), RetailerWholesalerMainActivity.class));
                             finish();
                         }
                         if (documentSnapshot.getString("userType").equals("wholesaler")) {

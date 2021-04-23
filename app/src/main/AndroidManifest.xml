@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Trailproject1">
-
+        <activity android:name=".RetailerWholesalerMainActivity"></activity>
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,8 +20,6 @@
         <activity
             android:name=".SignUp"
             android:parentActivityName=".LoginActivity" />
-
-
         <activity android:name=".CustomerMainActivity" />
         <activity
             android:name=".CustomerOldOrders"
@@ -32,11 +30,9 @@
         <activity
             android:name=".CustomerPaymentOptions"
             android:parentActivityName=".CustomerCart" />
-
         <activity
             android:name=".CustomerFinalPage"
-            android:parentActivityName=".CustomerPaymentOptions"/>
-
+            android:parentActivityName=".CustomerPaymentOptions" />
         <activity android:name=".WholesalerOnionSelect" />
         <activity android:name=".WholesalerTomatoSelect" />
         <activity android:name=".WholesalerOrangeSelect" />
