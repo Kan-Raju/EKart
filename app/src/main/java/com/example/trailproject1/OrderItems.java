@@ -10,6 +10,15 @@ public class OrderItems
     private String sellerId;
     private String totalPrice;
     private String timeStamp;
+    private String status;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public String getcId() {
         return cId;
@@ -67,6 +76,7 @@ public class OrderItems
         sellerId = hmap.get("sellerId");
         totalPrice = hmap.get("totalPrice");
         timeStamp = hmap.get("timeStamp");
+        status = hmap.get("status");
     }
 
     public HashMap<String, String> toHmap()
@@ -78,6 +88,7 @@ public class OrderItems
         hmap.put("sellerId",sellerId);
         hmap.put("totalPrice",totalPrice);
         hmap.put("timeStamp",timeStamp);
+        hmap.put("status",status);
         return hmap;
     }
 
@@ -90,7 +101,7 @@ public class OrderItems
             if(!itemName.equals(r.getItemName())) return false;
             //if(!count.equals(r.getCount())) return false;
             if(!sellerId.equals(r.sellerId)) return false;
-            if(!totalPrice.equals(r.getTotalPrice())) return false;
+            //if(!totalPrice.equals(r.getTotalPrice())) return false;
             //if(!timeStamp.equals(r.getTimeStamp())) return false;
             return true;
         }

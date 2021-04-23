@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -17,13 +18,12 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.*;
-
-import static android.view.View.GONE;
 
 //class Order
 //{
@@ -48,7 +48,7 @@ public class CustomerMainActivity extends AppCompatActivity implements View.OnCl
     ArrayList<RelativeLayout> layoutarr = new ArrayList<>();
 
     ArrayList<Button> addUpdateCartBtnArr = new ArrayList<>();
-    ArrayList<TextView> inCartArr = new ArrayList<>();
+    // <TextView> inCartArr = new ArrayList<>();
 
     ArrayList<TextView> priceTitleArr = new ArrayList<>();
     ArrayList<Button> plsBtnArr = new ArrayList<>();
@@ -61,6 +61,60 @@ public class CustomerMainActivity extends AppCompatActivity implements View.OnCl
     Button search_btn;
     LinearLayout parent;
 
+    Button myCartBtn;
+    Button prevOrdsBtn;
+
+    private int findCartItemLoc(int pos)
+    {
+        HashMap<String, String> hmap = new HashMap<>();
+        hmap.put("cId", FirebaseAuth.getInstance().getCurrentUser().getUid());
+        hmap.put("itemName",searched_item);
+        int c = Integer.parseInt(countArr.get(pos).getText().toString());
+        hmap.put("count",countArr.get(pos).getText().toString());
+        hmap.put("sellerId",retailers.get(pos).getrId());
+        hmap.put("totalPrice",Integer.toString(getCost(pos)*c));
+        hmap.put("timeStamp",null);
+        hmap.put("status","cart order");
+        OrderItems obj = new OrderItems(hmap);
+        OrderItems temp;
+        for(int i=0; i<cartItems.size(); i++)
+        {
+            temp = cartItems.get(i);
+            if(temp.equals(obj))
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    private void alterButton(int pos, Button btn, TextView temp)
+    {
+        int orderPos = findCartItemLoc(pos);
+
+        if(orderPos == -1)
+        {
+            btn.setText("Add to Cart");
+            btn.setAlpha(1);
+            btn.setClickable(true);
+        }
+        else
+        {
+            OrderItems item = cartItems.get(orderPos);
+            if(! item.getCount().equalsIgnoreCase(temp.getText().toString()))
+            {
+                btn.setText("Update Cart");
+                btn.setAlpha(1);
+                btn.setClickable(true);
+            }
+            else
+            {
+                btn.setText("Already in Cart");
+                btn.setAlpha(0.5f);
+                btn.setClickable(false);
+            }
+        }
+    }
 
     @Override
     public void onClick(View v)
@@ -71,40 +125,89 @@ public class CustomerMainActivity extends AppCompatActivity implements View.OnCl
 
         int pos = tempId/mod;
 
-        if(tempId%mod == 6)
+        if(tempId%mod == 6)  // add to cart button pressed;
         {
-            //Toast.makeText(this, "add to cart button pressed.", Toast.LENGTH_SHORT).show();
-            if(addUpdateCartBtnArr.get(pos).getText().toString().equalsIgnoreCase("Add to Cart"))
+            Button btn = addUpdateCartBtnArr.get(pos);
+            String textOnBtn = btn.getText().toString();
+            if(textOnBtn.equalsIgnoreCase("Add to Cart"))
             {
                 HashMap<String, String> hmap = new HashMap<>();
-//                hmap.put("cId",);
-//                hmap.put("",);
-//                hmap.put("",);
-//                hmap.put("",);
-//                hmap.put("",);
-                //OrderItems obj = new OrderItems(hmap);
+                hmap.put("cId", FirebaseAuth.getInstance().getCurrentUser().getUid());
+                hmap.put("itemName",searched_item);
+                int c = Integer.parseInt(countArr.get(pos).getText().toString());
+                hmap.put("count",countArr.get(pos).getText().toString());
+                hmap.put("sellerId",retailers.get(pos).getrId());
+                hmap.put("totalPrice",Integer.toString(getCost(pos)*c));
+                hmap.put("timeStamp",null);
+                hmap.put("status","cart order");
+                OrderItems obj = new OrderItems(hmap);
+                cartItems.add(obj);
+
+                Toast.makeText(this, "added to cart successfully", Toast.LENGTH_SHORT).show();
+
+                btn.setText("Already in Cart");
+                btn.setAlpha(.5f);
+                btn.setClickable(false);
+            }
+            if(textOnBtn.equalsIgnoreCase("Update cart"))
+            {
+                int orderPos = findCartItemLoc(pos);
+                OrderItems item;
+                if(orderPos != -1)
+                {
+                    item = cartItems.get(orderPos);
+                    String count = countArr.get(pos).getText().toString();
+                    item.setCount(count);
+                    int c = Integer.parseInt(count);
+                    item.setTotalPrice(Integer.toString(getCost(pos)*c));
+
+                    if(c == 0) cartItems.remove(orderPos);
+
+                    Toast.makeText(this, "updated cart successfully", Toast.LENGTH_SHORT).show();
+
+                    btn.setText("Already in Cart");
+                    btn.setAlpha(.5f);
+                    btn.setClickable(false);
+                }
+                else
+                {
+                    btn.setText("Add to Cart");
+                    btn.setAlpha(1);
+                    btn.callOnClick();
+                }
+
             }
         }
         else if(tempId%mod == 9)
         {
             TextView temp = countArr.get(pos);
+            Button btn = addUpdateCartBtnArr.get(pos);
+            OrderItems item;
+
             int curr = Integer.parseInt(temp.getText().toString());
             if(curr > 0) {
                 curr--;
                 temp.setText(Integer.toString(curr));
                 int price = getCost(pos);
                 priceTitleArr.get(pos).setText("Rs. " + Integer.toString(price*curr) + " / " + curr +" pcs.");
+
+                alterButton(pos, btn, temp);
             }
         }
         else if(tempId%mod == 11)
         {
             TextView temp = countArr.get(pos);
+            Button btn = addUpdateCartBtnArr.get(pos);
+            OrderItems item;
+
             int curr = Integer.parseInt(temp.getText().toString());
             if(curr < availableArr.get(pos)) {
                 ++curr;
                 temp.setText(Integer.toString(curr));
                 int price = getCost(pos);
                 priceTitleArr.get(pos).setText("Rs. " + Integer.toString(price * curr) + " / " + curr + " pcs.");
+
+                alterButton(pos, btn, temp);
             }
         }
 
@@ -249,19 +352,19 @@ public class CustomerMainActivity extends AppCompatActivity implements View.OnCl
 //            updateCart.setVisibility(GONE);
 
 
-            TextView inCart = new Button(this);
-            inCart.setId(mod * pos + 8 + 130);
-            inCart.setText("In Cart");
-            inCart.setTextSize(10);
-            inCart.setTextColor(Color.BLACK);
-            inCart.setBackgroundColor(Color.WHITE);
-            RelativeLayout.LayoutParams inCartParam = new RelativeLayout.LayoutParams(ht - 1, ht - 1);
-            inCartParam.leftMargin = 950;
-            inCartParam.topMargin = 90;
-            inCartParam.width = 400;
-            inCartParam.height = 120;
-            inCart.setLayoutParams(inCartParam);
-            inCart.setVisibility(GONE);
+//            TextView inCart = new Button(this);
+//            inCart.setId(mod * pos + 8 + 130);
+//            inCart.setText("In Cart");
+//            inCart.setTextSize(10);
+//            inCart.setTextColor(Color.BLACK);
+//            inCart.setBackgroundColor(Color.WHITE);
+//            RelativeLayout.LayoutParams inCartParam = new RelativeLayout.LayoutParams(ht - 1, ht - 1);
+//            inCartParam.leftMargin = 950;
+//            inCartParam.topMargin = 90;
+//            inCartParam.width = 400;
+//            inCartParam.height = 120;
+//            inCart.setLayoutParams(inCartParam);
+//            inCart.setVisibility(GONE);
 
 
             Button minusBtn = new Button(this);
@@ -316,7 +419,7 @@ public class CustomerMainActivity extends AppCompatActivity implements View.OnCl
 
             layoutarr.add(layout);
             addUpdateCartBtnArr.add(addUpdateCart);
-            inCartArr.add(inCart);
+            // inCartArr.add(inCart);
 
             priceTitleArr.add(price_title);
 
@@ -335,7 +438,7 @@ public class CustomerMainActivity extends AppCompatActivity implements View.OnCl
 
             layout.addView(addUpdateCart);
             // layout.addView(updateCart);
-            layout.addView(inCart);
+            // layout.addView(inCart);
 
             layout.addView(minusBtn);
             layout.addView(count);
@@ -403,7 +506,6 @@ public class CustomerMainActivity extends AppCompatActivity implements View.OnCl
                                     hmap.put("oninC", document.getString("onionCost"));
                                     hmap.put("oninQ", document.getString("onionQuantity"));
 
-                                    Toast.makeText(CustomerMainActivity.this, hmap.toString(), Toast.LENGTH_LONG).show();
                                     try
                                     {
                                         Retailer r = new Retailer(hmap);
@@ -414,10 +516,10 @@ public class CustomerMainActivity extends AppCompatActivity implements View.OnCl
                                         Toast.makeText(CustomerMainActivity.this, "error :"+e.toString(), Toast.LENGTH_LONG).show();
                                     }
                                 }
-                                else
-                                {
-                                    Toast.makeText(CustomerMainActivity.this, document.getString("userType"), Toast.LENGTH_LONG).show();
-                                }
+//                                else
+//                                {
+//                                    Toast.makeText(CustomerMainActivity.this, document.getString("userType"), Toast.LENGTH_LONG).show();
+//                                }
                             }
                         }
                         else
@@ -437,7 +539,7 @@ public class CustomerMainActivity extends AppCompatActivity implements View.OnCl
         //clear in all arrays
         layoutarr = new ArrayList<>();
         addUpdateCartBtnArr = new ArrayList<>();
-        inCartArr = new ArrayList<>();
+        // inCartArr = new ArrayList<>();
         plsBtnArr = new ArrayList<>();
         minusBtnArr = new ArrayList<>();
         countArr = new ArrayList<>();
@@ -451,6 +553,9 @@ public class CustomerMainActivity extends AppCompatActivity implements View.OnCl
         setContentView(R.layout.activity_customer_main);
         search_space = findViewById(R.id.search_space);
         search_btn = findViewById(R.id.search_btn);
+
+        prevOrdsBtn = findViewById(R.id.previousorders);
+        myCartBtn = findViewById(R.id.mycartbtn);
 
         parent = findViewById(R.id.outer_layout);
 
@@ -475,6 +580,24 @@ public class CustomerMainActivity extends AppCompatActivity implements View.OnCl
                     clearFrontEnd();
                     search_space.setError("item not available");
                 }
+            }
+        });
+
+
+        prevOrdsBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(getApplicationContext(), CustomerOldOrders.class));
+            }
+        });
+
+
+        myCartBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(getApplicationContext(), CustomerCart.class));
             }
         });
     }

@@ -9,22 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Trailproject1">
-        <activity android:name=".WholesalerOnionSelect"></activity>
-        <activity android:name=".WholesalerTomatoSelect" />
-        <activity android:name=".WholesalerOrangeSelect" />
-        <activity android:name=".WholesalerAppleSelect" />
-        <activity
-            android:name=".Customer"
-            android:parentActivityName=".LoginActivity" />
-        <activity
-            android:name=".Retailer"
-            android:parentActivityName=".LoginActivity" />
-        <activity
-            android:name=".Wholesaler"
-            android:parentActivityName=".LoginActivity" />
-        <activity
-            android:name=".SignUp"
-            android:parentActivityName=".LoginActivity" />
+
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,6 +17,33 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".SignUp"
+            android:parentActivityName=".LoginActivity" />
+
+
+        <activity android:name=".CustomerMainActivity" />
+        <activity
+            android:name=".CustomerOldOrders"
+            android:parentActivityName=".CustomerMainActivity" />
+        <activity
+            android:name=".CustomerCart"
+            android:parentActivityName=".CustomerMainActivity" />
+        <activity
+            android:name=".CustomerPaymentOptions"
+            android:parentActivityName=".CustomerCart" />
+
+        <activity
+            android:name=".CustomerFinalPage"
+            android:parentActivityName=".CustomerPaymentOptions"/>
+
+        <activity android:name=".WholesalerOnionSelect" />
+        <activity android:name=".WholesalerTomatoSelect" />
+        <activity android:name=".WholesalerOrangeSelect" />
+        <activity android:name=".WholesalerAppleSelect" />
+        <activity
+            android:name=".Wholesaler"
+            android:parentActivityName=".LoginActivity" />
         <activity android:name=".MainMenuRetailer" />
         <activity
             android:name=".FruitsRetailer"
@@ -58,9 +70,6 @@
         <activity
             android:name=".RetailerFruitAppleAddToCartPage"
             android:parentActivityName=".FruitsRetailer" />
-        <activity
-            android:name=".CustomerMainActivity"
-            android:parentActivityName=".FruitsCustomer" />
     </application>
 
 </manifest>

@@ -7,29 +7,23 @@
     android:layout_height="match_parent"
     android:background="#8AF383"
     android:orientation="vertical"
-    tools:context=".CustomerMainActivity">
+    tools:context=".CustomerCart">
 
     <LinearLayout
         android:id="@+id/search"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/CustomerFruitAppleVendorDisplay"
+        app:layout_constraintBottom_toTopOf="@+id/cartItemsDisplay"
         app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
+        <TextView
             android:id="@+id/search_space"
-            android:layout_width="302dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="search"
-            android:textSize = "18sp"
-            app:layout_constraintBottom_toTopOf="@+id/CustomerFruitAppleVendorDisplay" />
-
-        <Button
-            android:id="@+id/search_btn"
-            android:layout_width="105dp"
-            android:layout_height="match_parent"
-            android:text="search" />
+            android:text="               My Cart"
+            android:textSize="36sp"
+            app:layout_constraintBottom_toTopOf="@+id/cartItemsDisplay" />
 
     </LinearLayout>
 
@@ -62,22 +56,22 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/CustomerFruitAppleVendorDisplay"
+        app:layout_constraintTop_toBottomOf="@+id/cartItemsDisplay"
         app:layout_constraintBottom_toTopOf="parent">
 
         <Button
-            android:id="@+id/previousorders"
+            android:id="@+id/old_orders"
             android:layout_width="203dp"
             android:layout_height="match_parent"
-            android:text="previous orders"
+            android:text="old orders"
             android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/CustomerFruitAppleVendorDisplay" />
+            app:layout_constraintBottom_toTopOf="@+id/cartItemsDisplay" />
 
         <Button
-            android:id="@+id/mycartbtn"
+            android:id="@+id/place_order"
             android:layout_width="208dp"
             android:layout_height="match_parent"
-            android:text="my cart" />
+            android:text="place order" />
 
     </LinearLayout>
 </LinearLayout>
