@@ -57,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
             state = findViewById(R.id.state);
             codePicker = findViewById(R.id.ccp);
 
-            phoneNumber.setText("9440739000");
+            // phoneNumber.setText("9440739000");
 
 
             nextBtn.setOnClickListener(new View.OnClickListener() {
@@ -167,7 +167,7 @@ public class LoginActivity extends AppCompatActivity {
                 state.setVisibility(View.GONE);
                 codeEnter.setVisibility(View.VISIBLE);
 
-                codeEnter.setText("666666");
+                // codeEnter.setText("666666");
 
                 verificationId=s;
                 token=forceResendingToken;
