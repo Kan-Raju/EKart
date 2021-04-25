@@ -125,7 +125,6 @@ public class SignUp extends AppCompatActivity {
                         user.put("onionQuantity","3949");
                     }
 
-
                     docRef.set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {

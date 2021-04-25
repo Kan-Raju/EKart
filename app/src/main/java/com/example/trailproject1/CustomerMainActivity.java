@@ -415,9 +415,9 @@ public class CustomerMainActivity extends AppCompatActivity implements View.OnCl
             seller.setText("Seller : "+retailers.get(pos).getName()+" \n "+"           "+retailers.get(pos).getCity());
             seller.setTextSize(18);
             RelativeLayout.LayoutParams sellerParam = new RelativeLayout.LayoutParams(ht - 1, ht - 1);
-            sellerParam.leftMargin = 80;
+            sellerParam.leftMargin = x(80.0/1440.0);
             sellerParam.topMargin = 450;
-            sellerParam.width = 1500;
+            sellerParam.width = x(1300.0/1440.0);
             sellerParam.height = 300;
             seller.setLayoutParams(sellerParam);
 
@@ -520,10 +520,10 @@ public class CustomerMainActivity extends AppCompatActivity implements View.OnCl
                                         Toast.makeText(CustomerMainActivity.this, "error :"+e.toString(), Toast.LENGTH_LONG).show();
                                     }
                                 }
-//                                else
-//                                {
-//                                    Toast.makeText(CustomerMainActivity.this, document.getString("userType"), Toast.LENGTH_LONG).show();
-//                                }
+                                else
+                                {
+                                    //Toast.makeText(CustomerMainActivity.this, document.getString("userType"), Toast.LENGTH_LONG).show();
+                                }
                             }
                         }
                         else
@@ -568,6 +568,7 @@ public class CustomerMainActivity extends AppCompatActivity implements View.OnCl
         } catch (Exception e) {
             Toast.makeText(this, "err2 = " +e.toString(), Toast.LENGTH_LONG).show();
         }
+        Toast.makeText(this, "widthpixels = " +this.getResources().getDisplayMetrics().widthPixels, Toast.LENGTH_LONG).show();
 
         search_btn.setOnClickListener(new View.OnClickListener(){
             @Override

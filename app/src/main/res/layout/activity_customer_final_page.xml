@@ -27,6 +27,65 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
+
+        <TextView
+            android:id="@+id/CustomerFinalPageText1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center"
+            android:layout_marginBottom="494dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="120dp"
+
+            android:background="#63E6B2"
+            android:gravity="center"
+            android:text=" Order placed successfully"
+            android:textColor="@color/white"
+            android:textSize="28sp" />
+
+        <TextView
+            android:id="@+id/CustomerFinalPageText2"
+            android:layout_width="wrap_content"
+            android:layout_height="91dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center"
+            android:layout_marginBottom="358dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="266dp"
+            android:background="#63E6B2"
+            android:gravity="center"
+            android:text="You will get confirmation after retailer confirms"
+            android:textColor="@color/white"
+            android:textSize="28sp" />
+
+        <TextView
+            android:id="@+id/CustomerFinalPageText3"
+            android:layout_width="361dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center"
+            android:layout_marginBottom="249dp"
+            android:layout_marginEnd="18dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="18dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="391dp"
+            android:background="#63E6B2"
+            android:gravity="center"
+            android:text="Now you can logout safely"
+            android:textColor="@color/white"
+            android:textSize="28sp" />
+
         <Button
             android:id="@+id/CustomerFinalPageAllOrders"
             android:layout_width="166dp"
@@ -48,7 +107,7 @@
         <Button
             android:id="@+id/CustomerFinalPageGoToShop"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="69dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentLeft="true"
@@ -60,7 +119,7 @@
             android:layout_marginLeft="220dp"
             android:layout_marginRight="23dp"
             android:layout_marginStart="220dp"
-            android:layout_marginTop="541dp"
+            android:layout_marginTop="531dp"
             android:text="go to shop" />
 
         <Button
@@ -81,57 +140,9 @@
             android:layout_marginTop="619dp"
             android:text="logout" />
 
-        <TextView
-            android:id="@+id/CustomerFinalPageText1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentTop="true"
-            android:layout_gravity="center"
-            android:layout_marginBottom="494dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="120dp"
 
-            android:background="@color/black"
-            android:gravity="center"
-            android:text=" Order placed successfully"
-            android:textColor="@color/white"
-            android:textSize="40dp" />
 
-        <TextView
-            android:id="@+id/CustomerFinalPageText2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentTop="true"
-            android:layout_gravity="center"
-            android:layout_marginBottom="373dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="266dp"
-            android:background="@color/black"
-            android:gravity="center"
-            android:text="You will get confirmation after retailer confirms"
-            android:textColor="@color/white"
-            android:textSize="30dp" />
 
-        <TextView
-            android:id="@+id/CustomerFinalPageText3"
-            android:layout_width="wrap_content"
-            android:layout_height="75dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentTop="true"
-            android:layout_gravity="center"
-            android:layout_marginBottom="240dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="400dp"
-            android:background="@color/black"
-            android:gravity="center"
-            android:text="Now you can logout safely"
-            android:textColor="@color/white"
-            android:textSize="30dp" />
 
 
     </RelativeLayout>
