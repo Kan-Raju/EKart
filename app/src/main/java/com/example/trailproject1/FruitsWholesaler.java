@@ -53,8 +53,6 @@ public class FruitsWholesaler extends AppCompatActivity {
                             try
                             {
                                 String QuantityOfApple=applequantity.getText().toString();
-                                int CostOfApple=35;
-                               docRef.update("appleCost",String.valueOf(CostOfApple));
                                 docRef.update("appleQuantity",String.valueOf(QuantityOfApple));
 
 
@@ -86,8 +84,6 @@ public class FruitsWholesaler extends AppCompatActivity {
                             try
                             {
                                 String QuantityOfOrange=orangequantity.getText().toString();
-                                int CostOfOrange=35;
-                                docRef.update("orangeCost",String.valueOf(CostOfOrange));
                                 docRef.update("orangeQuantity",String.valueOf(QuantityOfOrange));
 
 

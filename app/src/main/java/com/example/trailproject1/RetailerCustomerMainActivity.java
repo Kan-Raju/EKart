@@ -23,10 +23,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 
+public class RetailerCustomerMainActivity extends AppCompatActivity implements View.OnClickListener{
 
-public class CustomerMainActivity extends AppCompatActivity implements View.OnClickListener {
     String searched_item;// = "apple";
     int mod = 13;
 
@@ -514,18 +516,18 @@ public class CustomerMainActivity extends AppCompatActivity implements View.OnCl
                                         retailers.add(r);
                                     }catch(Exception e)
                                     {
-                                        Toast.makeText(CustomerMainActivity.this, "error :"+e.toString(), Toast.LENGTH_LONG).show();
+                                        Toast.makeText(RetailerCustomerMainActivity.this, "error :"+e.toString(), Toast.LENGTH_LONG).show();
                                     }
                                 }
 //                                else
 //                                {
-//                                    Toast.makeText(CustomerMainActivity.this, document.getString("userType"), Toast.LENGTH_LONG).show();
+//                                    Toast.makeText(RetailerCustomerMainActivity.this, document.getString("userType"), Toast.LENGTH_LONG).show();
 //                                }
                             }
                         }
                         else
                         {
-                            Toast.makeText(CustomerMainActivity.this, "task failed", Toast.LENGTH_LONG).show();
+                            Toast.makeText(RetailerCustomerMainActivity.this, "task failed", Toast.LENGTH_LONG).show();
                         }
                     }
                 });
@@ -553,13 +555,13 @@ public class CustomerMainActivity extends AppCompatActivity implements View.OnCl
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_main);
-        search_space = findViewById(R.id.search_space);
-        search_btn = findViewById(R.id.search_btn);
+        search_space = findViewById(R.id.RetailerCustomerMainActivitysearch_space);
+        search_btn = findViewById(R.id.RetailerCustomerMainActivitysearch_btn);
 
-        prevOrdsBtn = findViewById(R.id.previousorders);
-        myCartBtn = findViewById(R.id.mycartbtn);
+        prevOrdsBtn = findViewById(R.id.RetailerCustomerMainActivitypreviousorders);
+        myCartBtn = findViewById(R.id.RetailerCustomerMainActivitymycartbtn);
 
-        parent = findViewById(R.id.outer_layout);
+        parent = findViewById(R.id.RetailerCustomerMainActivityouter_layout);
 
         try {
             getAllRetailersFromFirebaseAndFillRetailersArray(this);
@@ -575,7 +577,7 @@ public class CustomerMainActivity extends AppCompatActivity implements View.OnCl
                 if(items.contains(searched_item)) {
                     clearFrontEnd();
                     displayAllRetailersOfSearchedItem(parent);
-                    setListenersToAllButtons(CustomerMainActivity.this);
+                    setListenersToAllButtons(RetailerCustomerMainActivity.this);
                 }
                 else
                 {

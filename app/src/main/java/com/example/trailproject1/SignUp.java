@@ -47,7 +47,7 @@ public class SignUp extends AppCompatActivity {
 
         userID=firebaseAuth.getCurrentUser().getUid();
 
-        Toast.makeText(this, "userId = " + userID, Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, "userId = " + userID, Toast.LENGTH_LONG).show();
         DocumentReference docRef= fStore.collection("users").document(userID);
 
         isCustomerBox=findViewById(R.id.isCustomer);
@@ -101,28 +101,36 @@ public class SignUp extends AppCompatActivity {
                     //access level
                     if(isCustomerBox.isChecked()){
                         user.put("userType","customer");
+                        user.put("appleCost","40");
+                        user.put("appleQuantity","0");
+                        user.put("orangeCost","15");
+                        user.put("orangeQuantity","0");
+                        user.put("tomatoCost","10");
+                        user.put("tomatoQuantity","0");
+                        user.put("onionCost","5");
+                        user.put("onionQuantity","0");
                     }
                     if(isRetailerBox.isChecked()){
                         user.put("userType","retailer");
                         user.put("appleCost","35");
-                        user.put("appleQuantity","543");
-                        user.put("orangeCost","15");
-                        user.put("orangeQuantity","249");
+                        user.put("appleQuantity","0");
+                        user.put("orangeCost","10");
+                        user.put("orangeQuantity","0");
                         user.put("tomatoCost","6");
-                        user.put("tomatoQuantity","1049");
+                        user.put("tomatoQuantity","0");
                         user.put("onionCost","3");
-                        user.put("onionQuantity","949");
+                        user.put("onionQuantity","0");
                     }
                     if(isWholesalerBox.isChecked()){
                         user.put("userType","wholesaler");
                         user.put("appleCost","25");
-                        user.put("appleQuantity","3543");
+                        user.put("appleQuantity","0");
                         user.put("orangeCost","10");
-                        user.put("orangeQuantity","3249");
+                        user.put("orangeQuantity","0");
                         user.put("tomatoCost","3");
-                        user.put("tomatoQuantity","7049");
+                        user.put("tomatoQuantity","0");
                         user.put("onionCost","1");
-                        user.put("onionQuantity","3949");
+                        user.put("onionQuantity","0");
                     }
 
 

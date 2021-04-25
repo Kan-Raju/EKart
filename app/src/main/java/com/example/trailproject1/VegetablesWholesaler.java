@@ -49,8 +49,6 @@ public class VegetablesWholesaler extends AppCompatActivity {
                             try
                             {
                                 String QuantityOfTomato=Tomatoquantity.getText().toString();
-                                int CostOfTomato=35;
-                                docRef.update("tomatoCost",String.valueOf(CostOfTomato));
                                 docRef.update("tomatoQuantity",String.valueOf(QuantityOfTomato));
 
 
@@ -71,32 +69,7 @@ public class VegetablesWholesaler extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                DocumentReference docRef=fStore.collection("users").document(fAuth.getCurrentUser().getUid());
-                docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                    @Override
-                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        if(documentSnapshot.exists())
-                        {
-                            try
-                            {
-                                String QuantityOfOnion=Tomatoquantity.getText().toString();
-                                int CostOfOnion=35;
-                                docRef.update("onionCost",String.valueOf(CostOfOnion));
-                                docRef.update("onionQuantity",String.valueOf(QuantityOfOnion));
-
-
-                            }
-                            catch (Exception e)
-                            {
-                                String str = "hello "+e.toString();
-                                Toast.makeText(VegetablesWholesaler.this, str , Toast.LENGTH_SHORT).show();
-                            }
-
-
-                        }
-                    };
-                });
-
+                Toast.makeText(VegetablesWholesaler.this,"Out of stock ",Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/RetailerFruitAppleSelectPage"
@@ -9,20 +9,22 @@
     tools:context=".RetailerFruitAppleAddToCartPage">
 
 
-    <ScrollView
+
+    <LinearLayout
         android:id="@+id/RetailerFruitAppleVendorDisplay"
         android:layout_width="383dp"
         android:layout_height="387dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginTop="50dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginEnd="16dp"
+
         android:layout_marginRight="16dp"
         android:layout_marginBottom="200dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/RetailerFruitAppleSelectingOptionText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="horizontal" />
 
     <Button
         android:id="@+id/RetailerFruitAppleVendorSelectButton"
@@ -43,6 +45,7 @@
         android:text="Total Cost:"
         android:textColor="#0B0909"
         android:textSize="30sp"
+        android:layout_below="@+id/RetailerFruitAppleVendorDisplay"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="548dp"
         tools:ignore="MissingConstraints" />
@@ -53,9 +56,8 @@
         android:layout_height="49dp"
         android:text="TextView"
         android:textSize="24sp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="180dp"
-        tools:layout_editor_absoluteY="550dp" />
+        android:layout_marginBottom="80dp"
+        />
 
     <Button
         android:id="@+id/RetailerFruitAppleAddToCartButton"
@@ -76,4 +78,5 @@
         tools:layout_editor_absoluteX="14dp"
         tools:layout_editor_absoluteY="20dp"
         tools:ignore="MissingConstraints" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>

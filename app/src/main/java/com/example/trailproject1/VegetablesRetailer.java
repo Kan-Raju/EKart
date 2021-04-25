@@ -7,11 +7,20 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class VegetablesRetailer extends AppCompatActivity {
 
     TextView Tomatoquantity,Onionquantity;
     int count = 0;
+    FirebaseAuth fAuth;
+    FirebaseFirestore fStore;
     Button RetailerTomatoSelectBtn,RetailerOnionSelectBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,11 +31,37 @@ public class VegetablesRetailer extends AppCompatActivity {
 
         RetailerTomatoSelectBtn=(Button)findViewById(R.id.RetailerTomatoQauntitySelectButton);
         RetailerOnionSelectBtn=(Button)findViewById(R.id.RetailerOnionQauntitySelectButton);
+        fAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
 
 
         RetailerTomatoSelectBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                DocumentReference docRef=fStore.collection("users").document(fAuth.getCurrentUser().getUid());
+                docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if(documentSnapshot.exists())
+                        {
+                            try
+                            {
+                                String QuantityOfApple=Tomatoquantity.getText().toString();
+                                docRef.update("tomatoQuantity",String.valueOf(QuantityOfApple));
+
+
+                            }
+                            catch (Exception e)
+                            {
+                                String str = "hello "+e.toString();
+                                Toast.makeText(VegetablesRetailer.this, str , Toast.LENGTH_SHORT).show();
+                            }
+
+
+                        }
+                    };
+                });
                 Intent intent=new Intent(VegetablesRetailer.this,RetailerVegetableTomatoAddToCartPage.class);
                 startActivity(intent);
             }
@@ -34,10 +69,16 @@ public class VegetablesRetailer extends AppCompatActivity {
         RetailerOnionSelectBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(VegetablesRetailer.this,RetailerVegetableOnionAddToCartPage.class);
-                startActivity(intent);
+                Toast.makeText(VegetablesRetailer.this,"Out of stock ",Toast.LENGTH_SHORT).show();
             }
         });
+        /*RetailerTomatoSelectBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(VegetablesRetailer.this,RetailerVegetableTomatoAddToCartPage.class);
+                startActivity(intent);
+            }
+        });*/
     }
     public void incrementTomato(View v)
     {

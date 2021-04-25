@@ -26,11 +26,10 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.*;
 
 public class RetailerWholesalerMainActivity extends AppCompatActivity implements View.OnClickListener {
-
     String searched_item;// = "apple";
     int mod = 13;
 
-    public static ArrayList<Retailer> wholesalers = new ArrayList<>();
+    public static ArrayList<Retailer> retailers = new ArrayList<>();
     public static ArrayList<OrderItems> cartItems = new ArrayList<>();
 
     ArrayList<String> items = new ArrayList<>(Arrays.asList("apple","orange","tomato","onion"));
@@ -57,11 +56,11 @@ public class RetailerWholesalerMainActivity extends AppCompatActivity implements
     private int findCartItemLoc(int pos)
     {
         HashMap<String, String> hmap = new HashMap<>();
-        hmap.put("cId", FirebaseAuth.getInstance().getCurrentUser().getUid()); //doubt cId
+        hmap.put("cId", FirebaseAuth.getInstance().getCurrentUser().getUid());
         hmap.put("itemName",searched_item);
         int c = Integer.parseInt(countArr.get(pos).getText().toString());
         hmap.put("count",countArr.get(pos).getText().toString());
-        hmap.put("sellerId",wholesalers.get(pos).getrId());
+        hmap.put("sellerId",retailers.get(pos).getrId());
         hmap.put("totalPrice",Integer.toString(getCost(pos)*c));
         hmap.put("timeStamp",null);
         hmap.put("status","cart order");
@@ -126,7 +125,7 @@ public class RetailerWholesalerMainActivity extends AppCompatActivity implements
                 hmap.put("itemName",searched_item);
                 int c = Integer.parseInt(countArr.get(pos).getText().toString());
                 hmap.put("count",countArr.get(pos).getText().toString());
-                hmap.put("sellerId",wholesalers.get(pos).getrId());
+                hmap.put("sellerId",retailers.get(pos).getrId());
                 hmap.put("totalPrice",Integer.toString(getCost(pos)*c));
                 hmap.put("timeStamp",null);
                 hmap.put("status","cart order");
@@ -200,8 +199,8 @@ public class RetailerWholesalerMainActivity extends AppCompatActivity implements
                 alterButton(pos, btn, temp);
             }
         }
-    }
 
+    }
 
     private void setListenersToAllButtons(Context context)
     {
@@ -210,17 +209,18 @@ public class RetailerWholesalerMainActivity extends AppCompatActivity implements
         for(Button playBut:minusBtnArr) playBut.setOnClickListener(this);
     }
 
+
     private String getCount(int pos)
     {
         switch (searched_item) {
             case "apple":
-                return Integer.toString(wholesalers.get(pos).getAppQ());
+                return Integer.toString(retailers.get(pos).getAppQ());
             case "orange":
-                return Integer.toString(wholesalers.get(pos).getOrngQ());
+                return Integer.toString(retailers.get(pos).getOrngQ());
             case "tomato":
-                return Integer.toString(wholesalers.get(pos).getTmtQ());
+                return Integer.toString(retailers.get(pos).getTmtQ());
             case "onion":
-                return Integer.toString(wholesalers.get(pos).getOninQ());
+                return Integer.toString(retailers.get(pos).getOninQ());
             default:
                 return "0";
         }
@@ -251,22 +251,27 @@ public class RetailerWholesalerMainActivity extends AppCompatActivity implements
     {
         switch(searched_item) {
             case "apple":
-                return wholesalers.get(pos).getAppC();
+                return retailers.get(pos).getAppC();
             case "orange":
-                return wholesalers.get(pos).getOrngC();
+                return retailers.get(pos).getOrngC();
             case "tomato":
-                return wholesalers.get(pos).getTmtC();
+                return retailers.get(pos).getTmtC();
             case "onion":
-                return wholesalers.get(pos).getOninC();
+                return retailers.get(pos).getOninC();
             default:
                 return 0;
         }
     }
 
+    private int x(double x)
+    {
+        return (int) (x * this.getResources().getDisplayMetrics().widthPixels);
+    }
+
     private RelativeLayout getLayout(Context context, int pos)
     {
         RelativeLayout layout = new RelativeLayout(context);
-        int ht = (int) (200 * this.getResources().getDisplayMetrics().density + 0.5f);
+        int ht = (int) (250 * this.getResources().getDisplayMetrics().density + 0.5f);
         try {
             layout.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, ht));
             layout.setBackgroundColor(Color.WHITE);
@@ -324,7 +329,7 @@ public class RetailerWholesalerMainActivity extends AppCompatActivity implements
             addUpdateCart.setTextColor(Color.BLACK);
             addUpdateCart.setBackgroundColor(Color.WHITE);
             RelativeLayout.LayoutParams addUpdateCartParam = new RelativeLayout.LayoutParams(ht - 1, ht - 1);
-            addUpdateCartParam.leftMargin = 950;
+            addUpdateCartParam.leftMargin = x(3.4/5.0);
             addUpdateCartParam.topMargin = 90;
             addUpdateCartParam.width = 400;
             addUpdateCartParam.height = 120;
@@ -367,7 +372,7 @@ public class RetailerWholesalerMainActivity extends AppCompatActivity implements
             minusBtn.setTextColor(Color.BLACK);
             minusBtn.setBackgroundColor(Color.WHITE);
             RelativeLayout.LayoutParams minusBtnParam = new RelativeLayout.LayoutParams(ht - 1, ht - 1);
-            minusBtnParam.leftMargin = 950;
+            minusBtnParam.leftMargin = x(3.4/5.0);
             minusBtnParam.topMargin = 250;
             minusBtnParam.width = 120;
             minusBtnParam.height = 100;
@@ -378,7 +383,7 @@ public class RetailerWholesalerMainActivity extends AppCompatActivity implements
             count.setText("0");
             count.setTextSize(18);
             RelativeLayout.LayoutParams countParam = new RelativeLayout.LayoutParams(ht - 1, ht - 1);
-            countParam.leftMargin = 1100;
+            countParam.leftMargin = x(3.936/5.0);
             countParam.topMargin = 250;
             countParam.width = 100;
             countParam.height = 100;
@@ -392,7 +397,7 @@ public class RetailerWholesalerMainActivity extends AppCompatActivity implements
             plusBtn.setTextColor(Color.BLACK);
             plusBtn.setBackgroundColor(Color.WHITE);
             RelativeLayout.LayoutParams plusBtnParam = new RelativeLayout.LayoutParams(ht - 1, ht - 1);
-            plusBtnParam.leftMargin = 1200;
+            plusBtnParam.leftMargin = x(4.294/5.0);
             plusBtnParam.topMargin = 250;
             plusBtnParam.width = 120;
             plusBtnParam.height = 100;
@@ -401,7 +406,7 @@ public class RetailerWholesalerMainActivity extends AppCompatActivity implements
 
             TextView seller = new TextView(this);
             seller.setId(mod * pos + 12 + 130);
-            seller.setText("Seller : "+wholesalers.get(pos).getName()+" \n "+"           "+wholesalers.get(pos).getCity());
+            seller.setText("Seller : "+retailers.get(pos).getName()+" \n "+"           "+retailers.get(pos).getCity());
             seller.setTextSize(18);
             RelativeLayout.LayoutParams sellerParam = new RelativeLayout.LayoutParams(ht - 1, ht - 1);
             sellerParam.leftMargin = 80;
@@ -451,21 +456,22 @@ public class RetailerWholesalerMainActivity extends AppCompatActivity implements
     {
         switch(searched_item){
             case "apple":
-                return wholesalers.get(pos).getAppQ() > 0;
+                return retailers.get(pos).getAppQ() > 0;
             case "orange":
-                return wholesalers.get(pos).getOrngQ() > 0;
+                return retailers.get(pos).getOrngQ() > 0;
             case "tomato":
-                return wholesalers.get(pos).getTmtQ() > 0;
+                return retailers.get(pos).getTmtQ() > 0;
             case "onion" :
-                return wholesalers.get(pos).getOninQ() > 0;
+                return retailers.get(pos).getOninQ() > 0;
             default:
                 return false;
         }
     }
 
+
     private void displayAllRetailersOfSearchedItem(LinearLayout parent) {
         RelativeLayout inner;
-        for (int retailer_pos = 0; retailer_pos < wholesalers.size(); retailer_pos++)
+        for (int retailer_pos = 0; retailer_pos < retailers.size(); retailer_pos++)
         {
             if(itemAvailable(retailer_pos)) {
                 inner = getLayout(this, retailer_pos);
@@ -504,7 +510,7 @@ public class RetailerWholesalerMainActivity extends AppCompatActivity implements
                                     {
                                         Retailer r = new Retailer(hmap);
                                         //if(!retailers.contains(r))
-                                        wholesalers.add(r);
+                                        retailers.add(r);
                                     }catch(Exception e)
                                     {
                                         Toast.makeText(RetailerWholesalerMainActivity.this, "error :"+e.toString(), Toast.LENGTH_LONG).show();
@@ -512,7 +518,7 @@ public class RetailerWholesalerMainActivity extends AppCompatActivity implements
                                 }
 //                                else
 //                                {
-//                                    Toast.makeText(CustomerMainActivity.this, document.getString("userType"), Toast.LENGTH_LONG).show();
+//                                    Toast.makeText(RetailerWholesalerMainActivity.this, document.getString("userType"), Toast.LENGTH_LONG).show();
 //                                }
                             }
                         }
@@ -543,9 +549,9 @@ public class RetailerWholesalerMainActivity extends AppCompatActivity implements
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_retailer_wholesaler_main);
 
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_customer_main);
         search_space = findViewById(R.id.RetailerWholesalerMainActivitysearch_space);
         search_btn = findViewById(R.id.RetailerWholesalerMainActivitysearch_btn);
 
@@ -597,12 +603,13 @@ public class RetailerWholesalerMainActivity extends AppCompatActivity implements
         });
     }
 
-
     @Override
-    public void onBackPressed() {
+    public void onBackPressed()
+    {
         super.onBackPressed();
         clearFrontEnd();
-        wholesalers = new ArrayList<>();
+        retailers = new ArrayList<>();
         finish();
     }
+
 }
